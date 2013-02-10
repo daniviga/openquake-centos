@@ -4,22 +4,22 @@ _work in progeress, not yet ready_
     yum install bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-devel.x86_64 zlib*.x86_64 make.x86_64 ncurses-devel.x86_64 bzip2-devel.x86_64 readline-devel.x86_64 zip.x86_64 unzip.x86_64 nc.x86_64 curl-devel.x86_64 expat-devel.x86_64 gettext.x86_64 gettext-devel.x86_64 xmlto.x86_64
 
 ## Git
-   make prefix=~/git install
+    make prefix=~/git install
 
 ## Python 2.7
-   ./configure --prefix=/home/openquake/python
-   make
-   make install
+    ./configure --prefix=/home/openquake/python
+    make
+    make install
 
 ## setuptools
-   wget http://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg
-   /bin/bash setuptools-0.6c11-py2.7.egg
+    wget http://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg
+    /bin/bash setuptools-0.6c11-py2.7.egg
 
 ## pip
-   python2.7 setup.py install
+    python2.7 setup.py install
 
 ## numpy
-   pip install numpy
+    pip install numpy
 
 ## scipy
     yum install -y gcc-gfortran.x86_64 compat-gcc-34-g77.x86_64 libgfortran.x86_64
