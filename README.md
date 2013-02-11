@@ -7,7 +7,7 @@ __work in progress, not ready yet__
     make prefix=~/git install
 
 ## Python 2.7
-    ./configure --prefix=/home/openquake/python
+    ./configure --prefix=$HOME/python
     make
     make install
 
@@ -57,13 +57,10 @@ __work in progress, not ready yet__
 ## Django
     pip install django
 
-- - - 
-
 ## h5py
     wget http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.8.10-patch1.tar.gz
-    ./configure --prefix=/root/buildroot/hdf5
+    ./configure --prefix=$HOME/hdf5
     make
     make install
-    export HDF5_DIR=/root/buildroot/hdf5
+    export HDF5_DIR=$HOME/hdf5
     pip install h5py
-
