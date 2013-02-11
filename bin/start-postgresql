@@ -1,0 +1,8 @@
+#!/bin/bash 
+
+if [ -z "$PGDATA" ]; then
+    echo 'Warning: $PGDATA is not set!'
+    exit 1
+fi
+
+~/postgresql/bin/postgres &
