@@ -16,6 +16,7 @@ __work in progress, not ready yet__
     /bin/bash setuptools-0.6c11-py2.7.egg
 
 ## pip
+    wget http://pypi.python.org/packages/source/p/pip/pip-1.2.1.tar.gz
     python2.7 setup.py install
 
 ## numpy
