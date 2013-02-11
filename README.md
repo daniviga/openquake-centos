@@ -97,6 +97,34 @@ __work in progress, not ready yet__
     make install
     
  - - -
- 
+## Get OpenQuake
+    mkdir ~/openquake; cd ~/openquake
+    git clone git://github.com/gem/openquake.git
+    git clone git://github.com/gem/oq-engine.git
+    git clone git://github.com/gem/oq-risklib.git
+    git clone git://github.com/gem/oq-nrmllib.git
+    git clone git://github.com/gem/oq-hazardlib.git
+
+    cd openquake/oq-engine
+    bin/openquake
+    
+    /home/openquake/openquake/oq-hazardlib/openquake/hazardlib/geo/geodetic.py:437: RuntimeWarning: geodetic speedups are not available
+    warnings.warn("geodetic speedups are not available", RuntimeWarning)
+    /home/openquake/openquake/oq-hazardlib/openquake/hazardlib/geo/utils.py:353: RuntimeWarning: geoutils speedups are not available
+    warnings.warn("geoutils speedups are not available", RuntimeWarning)
+    usage: openquake [-h] [--version] [--force-inputs] [--log-file LOG_FILE]
+                     [--log-level {debug,info,progress,warn,error,critical}]
+                     [--no-distribute] [--run-hazard CONFIG_FILE]
+                     [--list-hazard-calculations]
+                     [--list-hazard-outputs HAZARD_CALCULATION_ID]
+                     [--export-hazard OUTPUT_ID TARGET_DIR]
+                     [--run-risk CONFIG_FILE] [--hazard-output-id HAZARD_OUTPUT]
+                     [--hazard-calculation-id HAZARD_CALCULATION_ID]
+                     [--list-risk-calculations]
+                     [--list-risk-outputs RISK_CALCULATION_ID]
+                     [--export-risk OUTPUT_ID TARGET_DIR] [--exports {xml}]
+
 ## TODO
-Install OpenQuake
+
+*   Set up OpenQuake (DB...)
+*   Investigate "RuntimeWarning: geodetic speedups are not available"

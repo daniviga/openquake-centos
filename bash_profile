@@ -10,7 +10,7 @@ fi
 PATH=~/python/bin:~/erlang/bin:~/git/bin:~/hdf5/bin:~/postgresql/bin:~/rabbitmq/sbin:~/redis/bin:$PATH:$HOME/bin
 PYTHONPATH=.:~/python:~/openquake/nrml:~/openquake/nhlib:~/openquake/oq-risklib:~/openquake/oq-engine
 PGDATA=~/postgresql/var
-LD_LIBRARY_PATH=~/python/lib
+LD_LIBRARY_PATH=~/python/lib:~/postgresql/lib
 
 export PATH
 export PYTHONPATH
