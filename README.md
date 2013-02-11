@@ -7,7 +7,7 @@ __work in progress, not ready yet__
     make prefix=~/git install
 
 ## Python 2.7
-    ./configure --prefix=$HOME/python
+    ./configure --prefix=$HOME/python --enable-shared
     make
     make install
 
@@ -64,3 +64,39 @@ __work in progress, not ready yet__
     make install
     export HDF5_DIR=$HOME/hdf5
     pip install h5py
+    
+## Postgres
+    wget http://ftp.postgresql.org/pub/source/v9.2.3/postgresql-9.2.3.tar.bz2
+    ./configure --prefix=$HOME/postgresql --with-python
+    make
+    make install
+    pip install psycopg2
+    
+## Geos _(PostGIS dep.)_
+    http://download.osgeo.org/geos/geos-3.3.7.tar.bz2
+    ./configure --prefix=$HOME/postgresql
+    make
+    make install
+    
+## proj.4 _(PostGIS dep.)_
+    http://download.osgeo.org/proj/proj-4.8.0.tar.gz
+    ./configure --prefix=$HOME/postgresql
+    make
+    make install
+    
+## GDAL _(PostGIS dep.)_
+    wget http://download.osgeo.org/gdal/gdal-1.9.2.tar.gz
+    ./configure --prefix=$HOME/postgresql
+    make
+    make install
+    
+## PostGIS
+    wget http://download.osgeo.org/postgis/source/postgis-2.0.2.tar.gz
+    ./configure --prefix=$HOME/postgresql --with-projdir=$HOME/postgresql
+    make
+    make install
+    
+ - - -
+ 
+## TODO
+Install OpenQuake
