@@ -1,7 +1,9 @@
 __work in progress, not ready yet__
 
+Login as unprivileged user: i.e. "openquake"
+
 ## Build System
-    yum install bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-devel.x86_64 zlib*.x86_64 make.x86_64 ncurses-devel.x86_64 bzip2-devel.x86_64 readline-devel.x86_64 zip.x86_64 unzip.x86_64 nc.x86_64 curl-devel.x86_64 expat-devel.x86_64 gettext.x86_64 gettext-devel.x86_64 xmlto.x86_64
+    sudo yum install bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-devel.x86_64 zlib*.x86_64 make.x86_64 ncurses-devel.x86_64 bzip2-devel.x86_64 readline-devel.x86_64 zip.x86_64 unzip.x86_64 nc.x86_64 curl-devel.x86_64 expat-devel.x86_64 gettext.x86_64 gettext-devel.x86_64 xmlto.x86_64
 
 ## Git
     make prefix=~/git install
@@ -23,13 +25,13 @@ __work in progress, not ready yet__
     pip install numpy
 
 ## scipy
-    yum install -y gcc-gfortran.x86_64 compat-gcc-34-g77.x86_64 libgfortran.x86_64
-    yum install blas*.x86_64 lapack*.x86_64
+    sudo yum install -y gcc-gfortran.x86_64 compat-gcc-34-g77.x86_64 libgfortran.x86_64
+    sudo yum install blas*.x86_64 lapack*.x86_64
     cp /usr/lib64/libblas.so /usr/lib64/liblapack.so ~/python/lib/
     pip install scipy
 
 ## erlang
-    yum install libxslt.x86_64 libxslt-devel.x86_64 unixODBC-devel.x86_64
+    sudo yum install libxslt.x86_64 libxslt-devel.x86_64 unixODBC-devel.x86_64
     wget http://www.erlang.org/download/otp_src_R15B03-1.tar.gz
     ./configure
     make
