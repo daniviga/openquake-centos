@@ -28,7 +28,7 @@ __work in progress, not ready yet__
     pip install scipy
 
 ## erlang
-    yum install libxslt.x86_64 unixODBC-devel.x86_64
+    yum install libxslt.x86_64 libxslt-devel.x86_64 unixODBC-devel.x86_64
     wget http://www.erlang.org/download/otp_src_R15B03-1.tar.gz
     ./configure
     make
@@ -51,8 +51,8 @@ __work in progress, not ready yet__
     make PREFIX=~/redis install
     pip install redis
 
-## amqplib guppy python-geohash mock==0.7.2
-    pip install amqplib guppy python-geohash mock==0.7.2
+## pip various dep
+    pip install amqplib guppy python-geohash mock==0.7.2 Shapely lxml
 
 ## Django
     pip install django
