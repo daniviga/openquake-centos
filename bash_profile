@@ -7,10 +7,10 @@ fi
 
 # User specific environment and startup programs
 
-PATH=~/python/bin:~/erlang/bin:~/git/bin:~/hdf5/bin:~/postgresql/bin:~/rabbitmq/sbin:~/redis/bin:$PATH:$HOME/bin
-PYTHONPATH=.:~/python:~/openquake/nrml:~/openquake/nhlib:~/openquake/oq-risklib:~/openquake/oq-engine
-PGDATA=~/postgresql/var
-LD_LIBRARY_PATH=~/python/lib:~/postgresql/lib
+PATH=$HOME/local/bin:$HOME/local/sbin:$PATH:$HOME/bin
+LD_LIBRARY_PATH=$HOME/local/lib:$HOME/local/lib64
+PYTHONPATH=.:$HOME/openquake/openquake:$HOME/openquake/oq-engine:$HOME/openquake/oq-hazardlib:$HOME/openquake/oq-nrmllib:$HOME/openquake/oq-risklib
+PGDATA=$HOME/local/var/postgresql
 
 export PATH
 export PYTHONPATH
