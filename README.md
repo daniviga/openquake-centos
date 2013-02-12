@@ -139,10 +139,19 @@ Login as unprivileged user: i.e. "openquake"
                      [--list-risk-calculations]
                      [--list-risk-outputs RISK_CALCULATION_ID]
                      [--export-risk OUTPUT_ID TARGET_DIR] [--exports {xml}]
+                     
+## DB setup
+    ~/local/bin/initdb
+    echo 'standard_conforming_strings = off' >> ~/local/var/postgresql/postgresql.sql
+    ~/bin/start-postgresql
+   
+Apply _create_oq_schema.patch_ patch (supposing __/home/openquake__ as homedir)
+    
+    cd ~/openquake/oq-engine && ./bin/create_oq_schema --db-user=openquake --db-name=openquake --schema-path=$HOME/openquake/oq-engine/openquake/engine/db/schema
+    
 
 ## TODO
-
-*   Set up OpenQuake (DB...)
+*   Run tests
 *   Investigate "RuntimeWarning: geodetic speedups are not available"
 
 _ver. 2_
