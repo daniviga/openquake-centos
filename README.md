@@ -119,9 +119,11 @@ Login as unprivileged user: i.e. "openquake"
     git clone git://github.com/gem/oq-nrmllib.git
     git clone git://github.com/gem/oq-hazardlib.git
 
+## Setup OpenQuake
+
     cd openquake/oq-engine
     echo "GEOS_LIBRARY_PATH = '$HOME/local/lib/libgeos_c.so'" >> openquake/engine/settings.py
-    bin/openquake
+    ./bin/openquake
     
     /home/openquake/openquake/oq-hazardlib/openquake/hazardlib/geo/geodetic.py:437: RuntimeWarning: geodetic speedups are not available
       warnings.warn("geodetic speedups are not available", RuntimeWarning)
@@ -149,9 +151,20 @@ Apply _create_oq_schema.patch_ patch (supposing __/home/openquake__ as homedir) 
     
     cd ~/openquake/oq-engine && ./bin/create_oq_schema --db-user=openquake --db-name=openquake --schema-path=$HOME/openquake/oq-engine/openquake/engine/db/schema
     
+## Start services
+
+    ~/bin/start-postgresql
+    ~/bin/start-rabbitmq
+    ~/bin/start-celery
+    
+## Run some tests
+
+    pip install nose
+    cd ~/openquake/oq-engine && ./run_tests
 
 ## TODO
-*   Run tests
+*   Test real computation task
+*   Feedback!
 *   Investigate "RuntimeWarning: geodetic speedups are not available"
 
 _ver. 2_

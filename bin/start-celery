@@ -1,0 +1,15 @@
+#!/bin/bash 
+
+OQENGINE=~/openquake/oq-engine
+
+if [ -z "$OQENGINE" ]; then
+    echo 'Warning: eq-engine path is not set!'
+    exit 1
+fi
+
+cd $OQENGINE
+
+# Development
+nohup ~/local/bin/celeryd  &> ~/log/start-celery.log &
+# Production
+#nohup ~/local/bin/celeryd --logfile=~/log/celeryd.log > /dev/null &

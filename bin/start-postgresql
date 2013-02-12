@@ -5,4 +5,7 @@ if [ -z "$PGDATA" ]; then
     exit 1
 fi
 
-~/local/bin/postgres &
+# Development
+nohup ~/local/bin/postgres &> ~/log/start-postgresql.log &
+# Production
+#nohup ~/local/bin/postgres -r ~/log/postgres.log > /dev/null  &
