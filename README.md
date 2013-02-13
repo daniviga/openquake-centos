@@ -116,14 +116,15 @@ see http://trac.osgeo.org/postgis/wiki/UsersWikiPostgreSQLPostGIS
     
 ## PostGIS (1.5.8)
 *   PostGIS 2.0.2 does not work; as mentioned in http://www.postgis.org/docs/ST_GeomFromText.html:
-> Changed: 2.0.0 In prior versions of PostGIS ST_GeomFromText('GEOMETRYCOLLECTION(EMPTY)') was allowed. This is now illegal in PostGIS 2.0.0 to better conform with SQL/MM standards. This should now be written as ST_GeomFromText('GEOMETRYCOLLECTION EMPTY')
-
+> Changed: 2.0.0 In prior versions of PostGIS ST_GeomFromText('GEOMETRYCOLLECTION(EMPTY)') was allowed.
+> This is now illegal in PostGIS 2.0.0 to better conform with SQL/MM standards.
+> This should now be written as ST_GeomFromText('GEOMETRYCOLLECTION EMPTY')
+    
     wget http://download.osgeo.org/postgis/source/postgis-1.5.8.tar.gz
     ./configure --prefix=$HOME/local --with-projdir=$HOME/local
     make
     make install
         
- - - -
 ## Get OpenQuake
     mkdir ~/openquake; cd ~/openquake
     git clone git://github.com/gem/openquake.git
