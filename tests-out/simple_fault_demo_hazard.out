@@ -1,0 +1,134 @@
+/home/openquake/openquake/oq-hazardlib/openquake/hazardlib/geo/geodetic.py:437: RuntimeWarning: geodetic speedups are not available
+  warnings.warn("geodetic speedups are not available", RuntimeWarning)
+/home/openquake/openquake/oq-hazardlib/openquake/hazardlib/geo/utils.py:353: RuntimeWarning: geoutils speedups are not available
+  warnings.warn("geoutils speedups are not available", RuntimeWarning)
+[2013-02-13 22:57:00,839 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  initializing site model
+[2013-02-13 22:57:01,063 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  initializing realizations
+[2013-02-13 22:57:01,429 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  executing (hazard)
+[2013-02-13 22:57:13,900 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard   1% complete
+[2013-02-13 22:57:14,403 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard   2% complete
+[2013-02-13 22:57:20,669 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard   3% complete
+[2013-02-13 22:57:21,362 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard   4% complete
+[2013-02-13 22:57:21,759 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard   5% complete
+[2013-02-13 22:57:22,963 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard   6% complete
+[2013-02-13 22:57:23,678 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard   7% complete
+[2013-02-13 22:57:24,848 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard   8% complete
+[2013-02-13 22:57:25,577 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard   9% complete
+[2013-02-13 22:57:26,426 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  10% complete
+[2013-02-13 22:57:26,921 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  11% complete
+[2013-02-13 22:57:28,784 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  12% complete
+[2013-02-13 22:57:29,306 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  13% complete
+[2013-02-13 22:57:34,882 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  14% complete
+[2013-02-13 22:57:35,654 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  15% complete
+[2013-02-13 22:57:36,624 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  16% complete
+[2013-02-13 22:57:37,725 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  17% complete
+[2013-02-13 22:57:38,501 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  18% complete
+[2013-02-13 22:57:39,037 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  19% complete
+[2013-02-13 22:57:41,780 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  20% complete
+[2013-02-13 22:57:42,455 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  21% complete
+[2013-02-13 22:57:43,378 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  22% complete
+[2013-02-13 22:57:44,436 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  23% complete
+[2013-02-13 22:57:45,195 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  24% complete
+[2013-02-13 22:57:45,651 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  25% complete
+[2013-02-13 22:57:47,344 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  26% complete
+[2013-02-13 22:57:48,034 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  27% complete
+[2013-02-13 22:57:50,978 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  28% complete
+[2013-02-13 22:57:52,066 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  29% complete
+[2013-02-13 22:57:52,320 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  30% complete
+[2013-02-13 22:57:54,649 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  31% complete
+[2013-02-13 22:57:55,449 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  32% complete
+[2013-02-13 22:57:56,502 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  33% complete
+[2013-02-13 22:57:56,834 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  34% complete
+[2013-02-13 22:57:57,607 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  35% complete
+[2013-02-13 22:57:58,177 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  36% complete
+[2013-02-13 22:57:59,238 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  37% complete
+[2013-02-13 22:57:59,885 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  38% complete
+[2013-02-13 22:58:01,575 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  39% complete
+[2013-02-13 22:58:01,701 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  40% complete
+[2013-02-13 22:58:03,525 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  41% complete
+[2013-02-13 22:58:05,149 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  42% complete
+[2013-02-13 22:58:05,683 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  43% complete
+[2013-02-13 22:58:06,299 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  44% complete
+[2013-02-13 22:58:07,281 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  45% complete
+[2013-02-13 22:58:07,645 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  46% complete
+[2013-02-13 22:58:08,592 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  47% complete
+[2013-02-13 22:58:09,422 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  48% complete
+[2013-02-13 22:58:10,380 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  49% complete
+[2013-02-13 22:58:10,943 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  50% complete
+[2013-02-13 22:58:19,643 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  51% complete
+[2013-02-13 22:58:20,042 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  52% complete
+[2013-02-13 22:58:26,940 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  53% complete
+[2013-02-13 22:58:27,956 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  54% complete
+[2013-02-13 22:58:28,477 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  55% complete
+[2013-02-13 22:58:29,295 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  56% complete
+[2013-02-13 22:58:30,624 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  57% complete
+[2013-02-13 22:58:30,741 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  58% complete
+[2013-02-13 22:58:31,546 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  59% complete
+[2013-02-13 22:58:32,135 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  60% complete
+[2013-02-13 22:58:33,092 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  61% complete
+[2013-02-13 22:58:34,155 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  62% complete
+[2013-02-13 22:58:34,475 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  63% complete
+[2013-02-13 22:58:39,873 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  64% complete
+[2013-02-13 22:58:40,837 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  65% complete
+[2013-02-13 22:58:41,660 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  66% complete
+[2013-02-13 22:58:43,226 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  67% complete
+[2013-02-13 22:58:43,614 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  68% complete
+[2013-02-13 22:58:43,944 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  69% complete
+[2013-02-13 22:58:46,642 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  70% complete
+[2013-02-13 22:58:47,016 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  71% complete
+[2013-02-13 22:58:48,816 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  72% complete
+[2013-02-13 22:58:50,142 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  73% complete
+[2013-02-13 22:58:51,674 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  74% complete
+[2013-02-13 22:58:52,304 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  75% complete
+[2013-02-13 22:58:53,606 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  76% complete
+[2013-02-13 22:58:54,737 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  77% complete
+[2013-02-13 22:58:55,306 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  78% complete
+[2013-02-13 22:58:58,335 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  79% complete
+[2013-02-13 22:58:58,578 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  80% complete
+[2013-02-13 22:58:59,870 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  81% complete
+[2013-02-13 22:59:00,660 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  82% complete
+[2013-02-13 22:59:01,520 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  83% complete
+[2013-02-13 22:59:02,940 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  84% complete
+[2013-02-13 22:59:03,339 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  85% complete
+[2013-02-13 22:59:03,811 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  86% complete
+[2013-02-13 22:59:04,583 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  87% complete
+[2013-02-13 22:59:04,851 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  88% complete
+[2013-02-13 22:59:05,789 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  89% complete
+[2013-02-13 22:59:07,387 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  90% complete
+[2013-02-13 22:59:08,167 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  91% complete
+[2013-02-13 22:59:09,209 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  92% complete
+[2013-02-13 22:59:09,676 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  93% complete
+[2013-02-13 22:59:10,118 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  94% complete
+[2013-02-13 22:59:10,725 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  95% complete
+[2013-02-13 22:59:11,218 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  96% complete
+[2013-02-13 22:59:11,731 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  97% complete
+[2013-02-13 22:59:12,254 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  98% complete
+[2013-02-13 22:59:12,785 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard  99% complete
+[2013-02-13 22:59:13,286 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  > hazard 100% complete
+[2013-02-13 22:59:13,319 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  calculation 100% complete
+[2013-02-13 22:59:13,451 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  post_executing (hazard)
+[2013-02-13 22:59:14,051 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  post_processing (hazard)
+[2013-02-13 22:59:17,125 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  export (hazard)
+[2013-02-13 22:59:17,266 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  clean_up (hazard)
+[2013-02-13 22:59:17,576 #2 centos5-oq.vfamilyserver.org PROGRESS MainProcess/5771 root] **  complete (hazard)
+Job 2 ran successfully
+Calculation 2 results:
+ID	Ouput Type	Name
+1	hazard_curve	hc-rlz-3
+2	hazard_curve	hc-rlz-3
+3	hazard_curve	hc-rlz-4
+4	hazard_curve	hc-rlz-4
+5	hazard_curve	mean-curves-SA(0.025)
+6	hazard_curve	mean-curves-PGA
+7	hazard_map	hazard-map(0.1)-SA(0.025)-rlz-3
+8	hazard_map	hazard-map(0.1)-PGA-rlz-3
+9	hazard_map	hazard-map(0.2)-SA(0.025)-rlz-3
+10	hazard_map	hazard-map(0.2)-PGA-rlz-3
+11	hazard_map	hazard-map(0.1)-SA(0.025)-rlz-4
+12	hazard_map	hazard-map(0.2)-SA(0.025)-rlz-4
+13	hazard_map	hazard-map(0.1)-SA(0.025)-mean
+14	hazard_map	hazard-map(0.1)-PGA-rlz-4
+15	hazard_map	hazard-map(0.2)-SA(0.025)-mean
+16	hazard_map	hazard-map(0.2)-PGA-rlz-4
+17	hazard_map	hazard-map(0.1)-PGA-mean
+18	hazard_map	hazard-map(0.2)-PGA-mean
