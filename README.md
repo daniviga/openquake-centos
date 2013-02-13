@@ -34,7 +34,7 @@ Login as unprivileged user: i.e. "openquake"
 ## scipy
     pip install scipy
 
-## erlang
+## erlang _(RabbitMQ dep.)_
     sudo yum install libxslt.x86_64 libxslt-devel.x86_64 unixODBC-devel.x86_64
     wget http://www.erlang.org/download/otp_src_R15B03-1.tar.gz
     ./configure
