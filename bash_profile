@@ -15,6 +15,8 @@ PYTHONPATH=.:$HOME/openquake/openquake:$HOME/openquake/oq-engine:$HOME/openquake
 PGDATA=$HOME/local/var/postgresql
 
 export PATH
+export LD_LIBRARY_PATH
+export CPATH
+
 export PYTHONPATH
 export PGDATA
-export LD_LIBRARY_PATH
