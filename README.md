@@ -61,7 +61,7 @@ Login as unprivileged user: i.e. "openquake"
     pip install redis
 
 ## pip various dep
-    pip install amqplib guppy python-geohash mock==0.7.2 Shapely lxml
+    pip install amqplib guppy python-geohash mock==0.7.2 lxml
 
 ## Django
     pip install django
@@ -73,8 +73,9 @@ Login as unprivileged user: i.e. "openquake"
     make install
     HDF5_DIR=$HOME/local pip install h5py
     
-## Postgres
-    wget http://ftp.postgresql.org/pub/source/v9.2.3/postgresql-9.2.3.tar.bz2
+## Postgres (9.1)
+__PostGIS 1.5 is required and is incompatible with PostgreSQL 9.2, so PostgreSQL 9.1 is used instead__
+    wget http://ftp.postgresql.org/pub/source/v9.1.8/postgresql-9.1.8.tar.gz
     ./configure --prefix=$HOME/local --with-python
     make
     make install
@@ -103,9 +104,17 @@ Login as unprivileged user: i.e. "openquake"
     ./configure --prefix=$HOME/local --with-python --with-pg --with-hdf5=$HOME/local --with-geos --with-static-proj4
     make
     make install
+
+## Shapely (1.2.14)
+*   Shapely 1.2.17 does not work: wkt.ReadingError method no more available
+*   Better to be installed after Geos
+    pip install Shapely==1.2.14
     
-## PostGIS
-    wget http://download.osgeo.org/postgis/source/postgis-2.0.2.tar.gz
+## PostGIS (1.5.8)
+*   PostGIS 2.0.2 does not work; as mentioned in http://www.postgis.org/docs/ST_GeomFromText.html:
+> Changed: 2.0.0 In prior versions of PostGIS ST_GeomFromText('GEOMETRYCOLLECTION(EMPTY)') was allowed. This is now illegal in PostGIS 2.0.0 to better conform with SQL/MM standards. This should now be written as ST_GeomFromText('GEOMETRYCOLLECTION EMPTY') 
+
+    wget http://download.osgeo.org/postgis/source/postgis-1.5.8.tar.gz
     ./configure --prefix=$HOME/local --with-projdir=$HOME/local
     make
     make install
@@ -156,6 +165,7 @@ Apply _create_oq_schema.patch_ patch (supposing __/home/openquake__ as homedir) 
     ~/bin/start-postgresql
     ~/bin/start-rabbitmq
     ~/bin/start-celery
+    ~/bin/start-redis
     
 ## Run some tests
 
