@@ -75,6 +75,7 @@ Login as unprivileged user: i.e. "openquake"
     
 ## Postgres (9.1)
 __PostGIS 1.5 is required and is incompatible with PostgreSQL 9.2, so PostgreSQL 9.1 is used instead__
+see http://trac.osgeo.org/postgis/wiki/UsersWikiPostgreSQLPostGIS
     wget http://ftp.postgresql.org/pub/source/v9.1.8/postgresql-9.1.8.tar.gz
     ./configure --prefix=$HOME/local --with-python
     make
