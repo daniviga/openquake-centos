@@ -180,8 +180,8 @@ Apply _create_oq_schema.patch_ patch (supposing __/home/openquake__ as homedir) 
     bin/openquake --run-hazard=demos/simple_fault_demo_hazard/job.ini
 
 ## TODO
-*   Test real computation task
 *   Feedback!
 *   Investigate "RuntimeWarning: geodetic speedups are not available"
+*   Check system lib dependencies
 
 _ver. 3_
