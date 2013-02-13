@@ -73,13 +73,15 @@ Login as unprivileged user: i.e. "openquake"
     make install
     HDF5_DIR=$HOME/local pip install h5py
     
-## Postgres (9.1)
+## Postgres (9.1) and psycopg2
 __PostGIS 1.5 is required and is incompatible with PostgreSQL 9.2, so PostgreSQL 9.1 is used instead__
 see http://trac.osgeo.org/postgis/wiki/UsersWikiPostgreSQLPostGIS
     wget http://ftp.postgresql.org/pub/source/v9.1.8/postgresql-9.1.8.tar.gz
     ./configure --prefix=$HOME/local --with-python
     make
     make install
+    cp $HOME/src/postgis-1.5.8/doc/postgis_comments.sql $HOME/local/share/postgresql/contrib/postgis-1.5
+    
     pip install psycopg2
     
 ## Swig _(Geos dep.)_
@@ -172,10 +174,14 @@ Apply _create_oq_schema.patch_ patch (supposing __/home/openquake__ as homedir) 
 
     pip install nose
     cd ~/openquake/oq-engine && ./run_tests
+    
+## Run a real computation test
+    cd ~/openquake/oq-engine
+    bin/openquake --run-hazard=demos/simple_fault_demo_hazard/job.ini
 
 ## TODO
 *   Test real computation task
 *   Feedback!
 *   Investigate "RuntimeWarning: geodetic speedups are not available"
 
-_ver. 2_
+_ver. 3_
