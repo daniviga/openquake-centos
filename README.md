@@ -110,8 +110,8 @@ see http://trac.osgeo.org/postgis/wiki/UsersWikiPostgreSQLPostGIS
     make install
 
 ## Shapely (1.2.14)
-*   Shapely 1.2.17 does not work: wkt.ReadingError method no more available
-*   Better to be installed after Geos
+Shapely 1.2.17 does not work: wkt.ReadingError method no more available.
+Is better to install Shapely after Geos so it can use Geos speedups
     pip install Shapely==1.2.14
     
 ## PostGIS (1.5.8)
