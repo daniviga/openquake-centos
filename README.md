@@ -182,6 +182,8 @@ Apply _create_oq_schema.patch_ patch (supposing __/home/openquake__ as homedir) 
     cd ~/openquake/oq-engine
     bin/openquake --run-hazard=demos/simple_fault_demo_hazard/job.ini
 
+See output in: https://github.com/daniviga/openquake-centos5/blob/master/tests-out/simple_fault_demo_hazard.out
+
 ## TODO
 *   Feedback!
 *   Investigate "RuntimeWarning: geodetic speedups are not available"
