@@ -1,4 +1,4 @@
-__work in progress, not ready yet__
+__work in progress__
 
 Login as unprivileged user: i.e. "openquake"
 
