@@ -188,5 +188,6 @@ See output in: https://github.com/daniviga/openquake-centos5/blob/master/tests-o
 *   Feedback!
 *   Investigate "RuntimeWarning: geodetic speedups are not available"
 *   Check system lib dependencies
+*   Hardering PostgreSQL configuration
 
 _ver. 3_
