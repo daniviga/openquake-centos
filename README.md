@@ -115,7 +115,7 @@ see http://trac.osgeo.org/postgis/wiki/UsersWikiPostgreSQLPostGIS
     pip install Shapely==1.2.14
     
 ## PostGIS (1.5.8)
-PostGIS 2.0.2 does not work; as mentioned in http://www.postgis.org/docs/ST_GeomFromText.html:
+PostGIS 2.0.2 does not work with current OpenQuake, because as mentioned in http://www.postgis.org/docs/ST_GeomFromText.html:
 > Changed: 2.0.0 In prior versions of PostGIS ST_GeomFromText('GEOMETRYCOLLECTION(EMPTY)') was allowed.
 > This is now illegal in PostGIS 2.0.0 to better conform with SQL/MM standards.
 > This should now be written as ST_GeomFromText('GEOMETRYCOLLECTION EMPTY')
