@@ -3,10 +3,10 @@ __work in progress__
 Login as unprivileged user: i.e. "openquake"
 
 ## Build System (CentOS 5, needs sudo or root)
-    sudo yum install bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-devel.x86_64 zlib*.x86_64 make.x86_64 ncurses-devel.x86_64 bzip2-devel.x86_64 readline-devel.x86_64 zip.x86_64 unzip.x86_64 nc.x86_64 curl-devel.x86_64 expat-devel.x86_64 gettext.x86_64 gettext-devel.x86_64 xmlto.x86_64
+    sudo yum install bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-devel.x86_64 zlib*.x86_64 make.x86_64 ncurses-devel.x86_64 bzip2-devel.x86_64 readline-devel.x86_64 zip.x86_64 unzip.x86_64 nc.x86_64 curl-devel.x86_64 expat-devel.x86_64 gettext.x86_64 gettext-devel.x86_64 xmlto.x86_64 patch.x86_64
 
 ## Build System (CentOS 6, needs sudo or root)
-    sudo yum install bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-devel.x86_64 zlib*.x86_64 make.x86_64 ncurses-devel.x86_64 bzip2-devel.x86_64 readline-devel.x86_64 zip.x86_64 unzip.x86_64 nc.x86_64 libcurl-devel.x86_64 expat-devel.x86_64 gettext.x86_64 gettext-devel.x86_64 xmlto.x86_64 perl-ExtUtils-MakeMaker.x86_64
+    sudo yum install bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-devel.x86_64 zlib*.x86_64 make.x86_64 ncurses-devel.x86_64 bzip2-devel.x86_64 readline-devel.x86_64 zip.x86_64 unzip.x86_64 nc.x86_64 libcurl-devel.x86_64 expat-devel.x86_64 gettext.x86_64 gettext-devel.x86_64 xmlto.x86_64 perl-ExtUtils-MakeMaker.x86_64 pcre.x86_64 pcre-devel.x86_64 patch.x86_64
 
 ## Git
     wget https://github.com/git/git/archive/v1.8.1.3.tar.gz
@@ -55,7 +55,7 @@ Login as unprivileged user: i.e. "openquake"
     make && make install
 
 ## Celery
-    pip install Celery
+    pip install psutil Celery
 
 ## redis
     wget http://redis.googlecode.com/files/redis-2.6.9.tar.gz
@@ -84,7 +84,6 @@ see http://trac.osgeo.org/postgis/wiki/UsersWikiPostgreSQLPostGIS
     ./configure --prefix=$HOME/local --with-python
     make
     make install
-    cp $HOME/src/postgis-1.5.8/doc/postgis_comments.sql $HOME/local/share/postgresql/contrib/postgis-1.5
     
     pip install psycopg2
     
@@ -128,7 +127,9 @@ PostGIS 2.0.2 does not work with current OpenQuake, because as mentioned in http
     ./configure --prefix=$HOME/local --with-projdir=$HOME/local
     make
     make install
-        
+
+    cp $HOME/src/postgis-1.5.8/doc/postgis_comments.sql $HOME/local/share/postgresql/contrib/postgis-1.5
+	
 ## Get OpenQuake
     mkdir ~/openquake; cd ~/openquake
     git clone git://github.com/gem/openquake.git
