@@ -94,13 +94,13 @@ see http://trac.osgeo.org/postgis/wiki/UsersWikiPostgreSQLPostGIS
     make install
     
 ## Geos _(PostGIS dep.)_
-    http://download.osgeo.org/geos/geos-3.3.7.tar.bz2
+    wget http://download.osgeo.org/geos/geos-3.3.7.tar.bz2
     ./configure --prefix=$HOME/local --enable-python
     make
     make install
     
 ## proj.4 _(PostGIS dep.)_
-    http://download.osgeo.org/proj/proj-4.8.0.tar.gz
+    wget http://download.osgeo.org/proj/proj-4.8.0.tar.gz
     ./configure --prefix=$HOME/local
     make
     make install
