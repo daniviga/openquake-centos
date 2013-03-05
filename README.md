@@ -13,7 +13,7 @@ Login as unprivileged user: i.e. "openquake"
     make prefix=$HOME/local install
 
 ## Python 2.7
-    http://www.python.org/ftp/python/2.7.3/Python-2.7.3.tgz
+    wget http://www.python.org/ftp/python/2.7.3/Python-2.7.3.tgz
     ./configure --prefix=$HOME/local --enable-shared
     make
     make install
@@ -64,10 +64,10 @@ Login as unprivileged user: i.e. "openquake"
     pip install redis
 
 ## pip various dep
-    pip install amqplib guppy python-geohash mock==0.7.2 lxml
+    pip install amqplib guppy python-geohash mock==0.7.2 lxml==2.3.2
 
 ## Django
-    pip install django
+    pip install django==1.3.1
 
 ## h5py
     wget http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.8.10-patch1.tar.gz
