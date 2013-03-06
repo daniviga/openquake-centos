@@ -94,8 +94,10 @@ see http://trac.osgeo.org/postgis/wiki/UsersWikiPostgreSQLPostGIS
     make install
     
 ## Geos _(PostGIS dep.)_
+On CentOS 6 there's a compiler bug: http://trac.osgeo.org/geos/ticket/377
+
     wget http://download.osgeo.org/geos/geos-3.3.7.tar.bz2
-    ./configure --prefix=$HOME/local --enable-python
+    CFLAGS="-m64" CPPFLAGS="-m64" CXXFLAGS="-m64" LDFLAGS="-m64" FFLAGS="-m64" LDFLAGS="-L/usr/lib64/" ./configure --prefix=$HOME/local --enable-python
     make
     make install
     
@@ -163,7 +165,7 @@ PostGIS 2.0.2 does not work with current OpenQuake, because as mentioned in http
                      
 ## DB setup
     ~/local/bin/initdb
-    echo 'standard_conforming_strings = off' >> ~/local/var/postgresql/postgresql.sql
+    echo 'standard_conforming_strings = off' >> ~/local/var/postgresql/postgresql.conf
     ~/bin/start-postgresql
    
 Apply _create_oq_schema.patch_ patch (supposing __/home/openquake__ as homedir) then
@@ -172,6 +174,7 @@ Apply _create_oq_schema.patch_ patch (supposing __/home/openquake__ as homedir) 
     
 ## Start services
 
+	killall postgres
     ~/bin/start-postgresql
     ~/bin/start-rabbitmq
     ~/bin/start-celery
