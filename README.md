@@ -67,7 +67,7 @@ Login as unprivileged user: i.e. "openquake"
     pip install amqplib guppy python-geohash mock==0.7.2 lxml==2.3.2
 
 ## Django
-    pip install django==1.3.1
+    pip install django==1.4.5
 
 ## h5py
     wget http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.8.10-patch1.tar.gz
@@ -165,7 +165,6 @@ PostGIS 2.0.2 does not work with current OpenQuake, because as mentioned in http
                      
 ## DB setup
     ~/local/bin/initdb
-    echo 'standard_conforming_strings = off' >> ~/local/var/postgresql/postgresql.conf
     ~/bin/start-postgresql
    
 Apply _create_oq_schema.patch_ patch (supposing __/home/openquake__ as homedir) then
@@ -174,7 +173,7 @@ Apply _create_oq_schema.patch_ patch (supposing __/home/openquake__ as homedir) 
     
 ## Start services
 
-	killall postgres
+    killall postgres
     ~/bin/start-postgresql
     ~/bin/start-rabbitmq
     ~/bin/start-celery
@@ -197,4 +196,4 @@ See output in: https://github.com/daniviga/openquake-centos5/blob/master/tests-o
 *   Check system lib dependencies
 *   Hardering PostgreSQL configuration
 
-_ver. 3_
+_ver. 3.2_
