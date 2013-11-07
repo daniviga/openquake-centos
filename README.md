@@ -134,7 +134,6 @@ PostGIS 2.0.2 does not work with current OpenQuake, because as mentioned in http
 
 ## Get OpenQuake
     mkdir ~/openquake; cd ~/openquake
-    git clone git://github.com/gem/openquake.git
     git clone git://github.com/gem/oq-engine.git
     git clone git://github.com/gem/oq-risklib.git
     git clone git://github.com/gem/oq-nrmllib.git
@@ -144,24 +143,37 @@ PostGIS 2.0.2 does not work with current OpenQuake, because as mentioned in http
 
     cd openquake/oq-engine
     echo "GEOS_LIBRARY_PATH = '$HOME/local/lib/libgeos_c.so'" >> openquake/engine/settings.py
+
+## Build hazardlib speedups
+
+    cd openquake/oq-hazardlib
+    python setup.py build_ext
+    cd openquake/hazardlib/geo
+    ln -s ../../../build/lib.*/openquake/hazardlib/geo/*.so .
+
+## Run OpenQuake
+
+    cd openquake/oq-engine
     ./bin/openquake
 
-    /home/openquake/openquake/oq-hazardlib/openquake/hazardlib/geo/geodetic.py:437: RuntimeWarning: geodetic speedups are not available
-      warnings.warn("geodetic speedups are not available", RuntimeWarning)
-    /home/openquake/openquake/oq-hazardlib/openquake/hazardlib/geo/utils.py:353: RuntimeWarning: geoutils speedups are not available
-      warnings.warn("geoutils speedups are not available", RuntimeWarning)
-
-    usage: openquake [-h] [--version] [--force-inputs] [--log-file LOG_FILE]
+    usage: openquake [-h] [--version] [--log-file LOG_FILE]
                      [--log-level {debug,info,progress,warn,error,critical}]
-                     [--no-distribute] [--run-hazard CONFIG_FILE]
+                     [--no-distribute] [--list-inputs INPUT_TYPE] [--yes]
+                     [--config-file CONFIG_FILE] [--run-hazard CONFIG_FILE]
                      [--list-hazard-calculations]
                      [--list-hazard-outputs HAZARD_CALCULATION_ID]
                      [--export-hazard OUTPUT_ID TARGET_DIR]
+                     [--delete-hazard-calculation HAZARD_CALCULATION_ID]
                      [--run-risk CONFIG_FILE] [--hazard-output-id HAZARD_OUTPUT]
                      [--hazard-calculation-id HAZARD_CALCULATION_ID]
                      [--list-risk-calculations]
                      [--list-risk-outputs RISK_CALCULATION_ID]
-                     [--export-risk OUTPUT_ID TARGET_DIR] [--exports {xml}]
+                     [--export-risk OUTPUT_ID TARGET_DIR]
+                     [--delete-risk-calculation RISK_CALCULATION_ID]
+                     [--exports {xml}] [--export-type {xml,geojson}]
+                     [--load-gmf GMF_FILE] [--load-curve CURVE_FILE]
+                     [--list-imported-outputs]
+                     [--optimize-source-model INPUT_FILE AREA_DISCRETIZATION OUTPUT_FILE]
 
 ## DB setup
     ~/local/bin/initdb
@@ -192,8 +204,7 @@ See output in: https://github.com/daniviga/openquake-centos5/blob/master/tests-o
 
 ## TODO
 *   Feedback!
-*   Investigate "RuntimeWarning: geodetic speedups are not available"
 *   Check system lib dependencies
 *   Hardering PostgreSQL configuration
 
-_ver. 3.2_
+_how to ver. 3.99_
