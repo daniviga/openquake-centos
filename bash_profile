@@ -11,7 +11,7 @@ PATH=$HOME/local/bin:$HOME/local/sbin:$PATH:$HOME/bin
 LD_LIBRARY_PATH=$HOME/local/lib:$HOME/local/lib64
 CPATH=$HOME/local/include
 
-PYTHONPATH=.:$HOME/openquake/openquake:$HOME/openquake/oq-engine:$HOME/openquake/oq-hazardlib:$HOME/openquake/oq-nrmllib:$HOME/openquake/oq-risklib
+PYTHONPATH=.:$HOME/openquake/oq-engine:$HOME/openquake/oq-hazardlib:$HOME/openquake/oq-nrmllib:$HOME/openquake/oq-risklib
 PGDATA=$HOME/local/var/postgresql
 
 export PATH
