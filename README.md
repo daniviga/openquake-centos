@@ -1,4 +1,4 @@
-__work in progress__
+__work in progress__ tested with OpenQuake Engine (oq-engine) master commit __e62244f85173a69ba880fe94d0b53120231478ee__
 
 Login as unprivileged user: i.e. "openquaker". __DO NOT USE "openquake"!__
 
