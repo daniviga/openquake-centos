@@ -10,6 +10,6 @@ fi
 cd $OQENGINE
 
 # Development
-nohup ~/local/bin/celeryd  &> ~/log/start-celery.log &
+nohup ~/local/bin/celeryd --purge -c4 &> ~/log/start-celery.log &
 # Production
 #nohup ~/local/bin/celeryd --logfile=~/log/celeryd.log > /dev/null &

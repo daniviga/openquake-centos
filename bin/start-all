@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo -e "Starting PostgreSQL...\n"
+start-postgresql
+sleep 1
+echo -e "Starting RabbitMQ...\n"
+start-rabbitmq
+sleep 1
+echo -e "Starting Redis...\n"
+start-redis
+sleep 1
+echo -e "Starting Celery...\n"
+start-celery
+sleep 1
+echo -e "Done"
