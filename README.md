@@ -170,7 +170,7 @@ PostGIS 2.0.2 does not work with current OpenQuake, because as mentioned in http
     ~/local/bin/initdb
     ~/bin/start-postgresql
 
-Apply 'create_oq_schema.patch' patch (supposing __/home/openquake__ as homedir) then
+Apply 'create_oq_schema.patch' patch (supposing __/home/openquaker__ as homedir) then
 
     cd ~/openquake/oq-engine && ./bin/create_oq_schema --db-user=openquaker --db-name=openquake --schema-path=$HOME/openquake/oq-engine/openquake/engine/db/schema
 
