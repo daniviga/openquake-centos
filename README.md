@@ -207,6 +207,14 @@ Apply 'create_oq_schema.patch' patch (supposing __/home/openquaker__ as homedir)
     cd ~/openquake/oq-engine
     bin/openquake --rh=demos/hazard/SimpleFaultSourceClassicalPSHA/job.ini
 
+## Extra tools
+### htop
+    wget http://downloads.sourceforge.net/project/htop/htop/1.0.2/htop-1.0.2.tar.gz
+    ./configure --prefix=$HOME/local
+    make
+    make install
+    htop
+
 ## TODO
 *   Check system lib dependencies
 *   Hardering PostgreSQL configuration
