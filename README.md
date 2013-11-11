@@ -1,6 +1,6 @@
 __work in progress__
 
-Login as unprivileged user: i.e. "openquake"
+Login as unprivileged user: i.e. "openquaker". __DO NOT USE "openquake"!__
 
 ## Build System (CentOS 5, needs sudo or root)
     sudo yum install bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-devel.x86_64 zlib*.x86_64 make.x86_64 ncurses-devel.x86_64 bzip2-devel.x86_64 readline-devel.x86_64 zip.x86_64 unzip.x86_64 nc.x86_64 curl-devel.x86_64 expat-devel.x86_64 gettext.x86_64 gettext-devel.x86_64 xmlto.x86_64 patch.x86_64
@@ -9,11 +9,11 @@ Login as unprivileged user: i.e. "openquake"
     sudo yum install bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-devel.x86_64 zlib*.x86_64 make.x86_64 ncurses-devel.x86_64 bzip2-devel.x86_64 readline-devel.x86_64 zip.x86_64 unzip.x86_64 nc.x86_64 libcurl-devel.x86_64 expat-devel.x86_64 gettext.x86_64 gettext-devel.x86_64 xmlto.x86_64 perl-ExtUtils-MakeMaker.x86_64 pcre.x86_64 pcre-devel.x86_64 patch.x86_64
 
 ## Git
-    wget https://github.com/git/git/archive/v1.8.1.3.tar.gz
+    wget https://git-core.googlecode.com/files/git-1.8.4.3.tar.gz
     make prefix=$HOME/local install
 
 ## Python 2.7
-    wget http://www.python.org/ftp/python/2.7.3/Python-2.7.3.tgz
+    wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz
     ./configure --prefix=$HOME/local --enable-shared
     make
     make install
@@ -23,7 +23,7 @@ Login as unprivileged user: i.e. "openquake"
     /bin/bash setuptools-0.6c11-py2.7.egg
 
 ## pip
-    wget http://pypi.python.org/packages/source/p/pip/pip-1.2.1.tar.gz
+    wget http://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz
     python2.7 setup.py install
 
 ## numpy & scipy deps.
@@ -39,7 +39,7 @@ Login as unprivileged user: i.e. "openquake"
 
 ## erlang _(RabbitMQ dep.)_
     sudo yum install libxslt.x86_64 libxslt-devel.x86_64 unixODBC-devel.x86_64
-    wget http://www.erlang.org/download/otp_src_R15B03-1.tar.gz
+    wget http://www.erlang.org/download/otp_src_R16B02.tar.gz
     ./configure
     make
     make RELEASE_ROOT=$HOME/local/erlang release
@@ -54,33 +54,26 @@ Login as unprivileged user: i.e. "openquake"
     export MNESIA_DIR=~/local/var/rabbitmq
     make && make install
 
+## pip various dep
+    pip install amqplib python-geohash mock==0.7.2 lxml==2.3.2 psutil
+
 ## Celery
-    pip install psutil Celery
+    pip install Celery==2.5.5
 
 ## redis
-    wget http://redis.googlecode.com/files/redis-2.6.9.tar.gz
+    wget http://download.redis.io/releases/redis-2.6.16.tar.gz
     make
     make PREFIX=$HOME/local install
     pip install redis
 
-## pip various dep
-    pip install amqplib guppy python-geohash mock==0.7.2 lxml==2.3.2
-
 ## Django
     pip install django==1.4.5
-
-## h5py
-    wget http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.8.10-patch1.tar.gz
-    ./configure --prefix=$HOME/local
-    make
-    make install
-    HDF5_DIR=$HOME/local pip install h5py
 
 ## Postgres (9.1) and psycopg2
 __PostGIS 1.5 is required and is incompatible with PostgreSQL 9.2, so PostgreSQL 9.1 is used instead__
 see http://trac.osgeo.org/postgis/wiki/UsersWikiPostgreSQLPostGIS
 
-    wget http://ftp.postgresql.org/pub/source/v9.1.8/postgresql-9.1.8.tar.gz
+    wget http://ftp.postgresql.org/pub/source/v9.1.10/postgresql-9.1.10.tar.gz
     ./configure --prefix=$HOME/local --with-python
     make
     make install
@@ -109,7 +102,7 @@ On CentOS 6 there's a compiler bug: http://trac.osgeo.org/geos/ticket/377
 
 ## GDAL _(PostGIS dep.)_
     wget http://download.osgeo.org/gdal/gdal-1.9.2.tar.gz
-    ./configure --prefix=$HOME/local --with-python --with-pg --with-hdf5=$HOME/local --with-geos --with-static-proj4
+    ./configure --prefix=$HOME/local --with-python --with-pg --with-geos --with-static-proj5
     make
     make install
 
@@ -141,19 +134,17 @@ PostGIS 2.0.2 does not work with current OpenQuake, because as mentioned in http
 
 ## Setup OpenQuake
 
-    cd openquake/oq-engine
+    cd ~/openquake/oq-engine
     echo "GEOS_LIBRARY_PATH = '$HOME/local/lib/libgeos_c.so'" >> openquake/engine/settings.py
 
 ## Build hazardlib speedups
 
-    cd openquake/oq-hazardlib
+    cd ~/openquake/oq-hazardlib
     python setup.py build_ext
-    cd openquake/hazardlib/geo
-    ln -s ../../../build/lib.*/openquake/hazardlib/geo/*.so .
 
 ## Run OpenQuake
 
-    cd openquake/oq-engine
+    cd ~/openquake/oq-engine
     ./bin/openquake
 
     usage: openquake [-h] [--version] [--log-file LOG_FILE]
@@ -179,9 +170,9 @@ PostGIS 2.0.2 does not work with current OpenQuake, because as mentioned in http
     ~/local/bin/initdb
     ~/bin/start-postgresql
 
-Apply _create_oq_schema.patch_ patch (supposing __/home/openquake__ as homedir) then
+Apply 'create_oq_schema.patch' patch (supposing __/home/openquaker__ as homedir) then
 
-    cd ~/openquake/oq-engine && ./bin/create_oq_schema --db-user=openquake --db-name=openquake --schema-path=$HOME/openquake/oq-engine/openquake/engine/db/schema
+    cd ~/openquake/oq-engine && ./bin/create_oq_schema --db-user=openquaker --db-name=openquake --schema-path=$HOME/openquake/oq-engine/openquake/engine/db/schema
 
 ## Start services
 
@@ -194,17 +185,30 @@ Apply _create_oq_schema.patch_ patch (supposing __/home/openquake__ as homedir) 
 ## Run some tests
 
     pip install nose
-    cd ~/openquake/oq-engine && ./run_tests
+    cd ~/openquake/oq-engine
+    nosetests -v --with-xunit --with-coverage --cover-package=openquake.engine --with-doctest -x tests/
+
+    nosetests  -a 'qa,hazard,classical' -v --with-xunit --xunit-file=xunit-qa-hazard-classical.xml
+    nosetests  -a 'qa,hazard,event_based' -v --with-xunit --xunit-file=xunit-qa-hazard-event-based.xml
+    nosetests  -a 'qa,hazard,disagg' -v --with-xunit --xunit-file=xunit-qa-hazard-disagg.xml
+    nosetests  -a 'qa,hazard,scenario' -v --with-xunit --xunit-file=xunit-qa-hazard-scenario.xml
+
+    nosetests  -a 'qa,risk,classical' -v --with-xunit --xunit-file=xunit-qa-risk-classical.xml
+    nosetests  -a 'qa,risk,event_based' -v --with-xunit --xunit-file=xunit-qa-risk-event-based.xml
+    nosetests  -a 'qa,risk,classical_bcr' -v --with-xunit --xunit-file=xunit-qa-risk-classical-bcr.xml
+    nosetests  -a 'qa,risk,event_based_bcr' -v --with-xunit --xunit-file=xunit-qa-risk-event-based-bcr.xml
+    nosetests  -a 'qa,risk,scenario_damage' -v --with-xunit --xunit-file=xunit-qa-risk-scenario-damage.xml
+    nosetests  -a 'qa,risk,scenario' -v --with-xunit --xunit-file=xunit-qa-risk-scenario.xml
+
+    python-coverage xml --include="openquake/*"
+
 
 ## Run a real computation test
     cd ~/openquake/oq-engine
-    bin/openquake --run-hazard=demos/simple_fault_demo_hazard/job.ini
-
-See output in: https://github.com/daniviga/openquake-centos5/blob/master/tests-out/simple_fault_demo_hazard.out
+    bin/openquake --rh=demos/hazard/SimpleFaultSourceClassicalPSHA/job.ini
 
 ## TODO
-*   Feedback!
 *   Check system lib dependencies
 *   Hardering PostgreSQL configuration
 
-_how to ver. 3.99_
+_how to ver. 4.0_
