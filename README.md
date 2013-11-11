@@ -58,7 +58,7 @@ Login as unprivileged user: i.e. "openquaker". __DO NOT USE "openquake"!__
     pip install amqplib python-geohash mock==0.7.2 lxml==2.3.2 psutil
 
 ## Celery
-    pip install Celery
+    pip install Celery==2.5.5
 
 ## redis
     wget http://download.redis.io/releases/redis-2.6.16.tar.gz
@@ -142,7 +142,6 @@ PostGIS 2.0.2 does not work with current OpenQuake, because as mentioned in http
     cd openquake/oq-hazardlib
     python setup.py build_ext
     cd openquake/hazardlib/geo
-    ln -s ../../../build/lib.*/openquake/hazardlib/geo/*.so .
 
 ## Run OpenQuake
 
@@ -172,9 +171,9 @@ PostGIS 2.0.2 does not work with current OpenQuake, because as mentioned in http
     ~/local/bin/initdb
     ~/bin/start-postgresql
 
-Apply _create_oq_schema.patch_ patch (supposing __/home/openquake__ as homedir) then
+Apply 'create_oq_schema.patch' patch (supposing __/home/openquake__ as homedir) then
 
-    cd ~/openquake/oq-engine && ./bin/create_oq_schema --db-user=openquake --db-name=openquake --schema-path=$HOME/openquake/oq-engine/openquake/engine/db/schema
+    cd ~/openquake/oq-engine && ./bin/create_oq_schema --db-user=openquaker --db-name=openquake --schema-path=$HOME/openquake/oq-engine/openquake/engine/db/schema
 
 ## Start services
 

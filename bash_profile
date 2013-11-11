@@ -7,7 +7,7 @@ fi
 
 # User specific environment and startup programs
 
-PATH=$HOME/local/bin:$HOME/local/sbin:$PATH:$HOME/bin
+PATH=$HOME/openquake/oq-engine/bin:$HOME/local/bin:$HOME/local/sbin:$PATH:$HOME/bin
 LD_LIBRARY_PATH=$HOME/local/lib:$HOME/local/lib64
 CPATH=$HOME/local/include
 
