@@ -134,18 +134,17 @@ PostGIS 2.0.2 does not work with current OpenQuake, because as mentioned in http
 
 ## Setup OpenQuake
 
-    cd openquake/oq-engine
+    cd ~/openquake/oq-engine
     echo "GEOS_LIBRARY_PATH = '$HOME/local/lib/libgeos_c.so'" >> openquake/engine/settings.py
 
 ## Build hazardlib speedups
 
-    cd openquake/oq-hazardlib
+    cd ~/openquake/oq-hazardlib
     python setup.py build_ext
-    cd openquake/hazardlib/geo
 
 ## Run OpenQuake
 
-    cd openquake/oq-engine
+    cd ~/openquake/oq-engine
     ./bin/openquake
 
     usage: openquake [-h] [--version] [--log-file LOG_FILE]
@@ -186,17 +185,30 @@ Apply 'create_oq_schema.patch' patch (supposing __/home/openquake__ as homedir) 
 ## Run some tests
 
     pip install nose
-    cd ~/openquake/oq-engine && ./run_tests
+    cd ~/openquake/oq-engine
+    nosetests -v --with-xunit --with-coverage --cover-package=openquake.engine --with-doctest -x tests/
+
+    nosetests  -a 'qa,hazard,classical' -v --with-xunit --xunit-file=xunit-qa-hazard-classical.xml
+    nosetests  -a 'qa,hazard,event_based' -v --with-xunit --xunit-file=xunit-qa-hazard-event-based.xml
+    nosetests  -a 'qa,hazard,disagg' -v --with-xunit --xunit-file=xunit-qa-hazard-disagg.xml
+    nosetests  -a 'qa,hazard,scenario' -v --with-xunit --xunit-file=xunit-qa-hazard-scenario.xml
+
+    nosetests  -a 'qa,risk,classical' -v --with-xunit --xunit-file=xunit-qa-risk-classical.xml
+    nosetests  -a 'qa,risk,event_based' -v --with-xunit --xunit-file=xunit-qa-risk-event-based.xml
+    nosetests  -a 'qa,risk,classical_bcr' -v --with-xunit --xunit-file=xunit-qa-risk-classical-bcr.xml
+    nosetests  -a 'qa,risk,event_based_bcr' -v --with-xunit --xunit-file=xunit-qa-risk-event-based-bcr.xml
+    nosetests  -a 'qa,risk,scenario_damage' -v --with-xunit --xunit-file=xunit-qa-risk-scenario-damage.xml
+    nosetests  -a 'qa,risk,scenario' -v --with-xunit --xunit-file=xunit-qa-risk-scenario.xml
+
+    python-coverage xml --include="openquake/*"
+
 
 ## Run a real computation test
     cd ~/openquake/oq-engine
-    bin/openquake --run-hazard=demos/simple_fault_demo_hazard/job.ini
-
-See output in: https://github.com/daniviga/openquake-centos5/blob/master/tests-out/simple_fault_demo_hazard.out
+    bin/openquake --rh=demos/hazard/SimpleFaultSourceClassicalPSHA/job.ini
 
 ## TODO
-*   Feedback!
 *   Check system lib dependencies
 *   Hardering PostgreSQL configuration
 
-_how to ver. 3.99_
+_how to ver. 4.0_
