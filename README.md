@@ -82,13 +82,14 @@ see http://trac.osgeo.org/postgis/wiki/UsersWikiPostgreSQLPostGIS
 
 ## Swig (1.3.40) _(Geos dep.)_
 Geos 3.2.3 requires Swig 1.3.\* instead of 2.0.\*
+
     wget http://prdownloads.sourceforge.net/swig/swig-1.3.40.tar.gz
     ./configure --prefix=$HOME/local --without-alllang --with-python
     make
     make install
 
 ## Geos (3.2.3) _(PostGIS dep.)_
-On CentOS 6 there's a compiler bug: http://trac.osgeo.org/geos/ticket/377. With latest Geos (3.3/3.4) some tests fail.
+On CentOS 6 there's a compiler bug: http://trac.osgeo.org/geos/ticket/377.With latest Geos (3.3/3.4) some tests fail.
 
     wget http://download.osgeo.org/geos/geos-3.2.3.tar.bz2
     CFLAGS="-m64" CPPFLAGS="-m64" CXXFLAGS="-m64" LDFLAGS="-m64" FFLAGS="-m64" LDFLAGS="-L/usr/lib64/" ./configure --prefix=$HOME/local --enable-python
@@ -142,6 +143,7 @@ PostGIS 2.0.2 does not work with current OpenQuake, because as mentioned in http
 
     cd ~/openquake/oq-hazardlib
     python setup.py build_ext
+    ln -s ../../../build/lib.*/openquake/hazardlib/geo/*.so .
 
 ## Run OpenQuake
 
