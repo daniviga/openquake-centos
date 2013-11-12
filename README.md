@@ -31,10 +31,10 @@ Login as unprivileged user: i.e. "openquaker". __DO NOT USE "openquake"!__
     sudo yum install blas*.x86_64 lapack*.x86_64
     cp /usr/lib64/libblas.so /usr/lib64/liblapack.so ~/local/lib64
 
-## numpy (1.6.0)
+## numpy (1.6.2)
 With versions > 1.6.0 lot of tasks (both on the engine and the hazardlib) fail.
 
-    pip install numpy==1.6.0
+    pip install numpy==1.6.2
 
 ## scipy
 The latest version as writing is 0.13.0 and all tests are green.
