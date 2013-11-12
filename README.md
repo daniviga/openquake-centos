@@ -88,8 +88,7 @@ Geos 3.2.3 requires Swig 1.3.\* instead of 2.0.\*
     make install
 
 ## Geos (3.2.3) _(PostGIS dep.)_
-On CentOS 6 there's a compiler bug: http://trac.osgeo.org/geos/ticket/377.
-With latest Geos (3.3/3.4) some tests fail.
+On CentOS 6 there's a compiler bug: http://trac.osgeo.org/geos/ticket/377. With latest Geos (3.3/3.4) some tests fail.
 
     wget http://download.osgeo.org/geos/geos-3.2.3.tar.bz2
     CFLAGS="-m64" CPPFLAGS="-m64" CXXFLAGS="-m64" LDFLAGS="-m64" FFLAGS="-m64" LDFLAGS="-L/usr/lib64/" ./configure --prefix=$HOME/local --enable-python
