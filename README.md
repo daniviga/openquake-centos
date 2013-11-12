@@ -37,7 +37,9 @@ With versions > 1.6.0 lot of tasks (both on the engine and the hazardlib) fail.
     pip install numpy==1.6.0
 
 ## scipy
-    pip install scipy
+The latest version as writing is 0.13.0 and all tests are green.
+
+    pip install scipy==0.13.0
 
 ## erlang _(RabbitMQ dep.)_
     sudo yum install libxslt.x86_64 libxslt-devel.x86_64 unixODBC-devel.x86_64
@@ -57,7 +59,9 @@ With versions > 1.6.0 lot of tasks (both on the engine and the hazardlib) fail.
     make && make install
 
 ## pip various dep
-    pip install amqplib python-geohash mock==0.7.2 lxml==2.3.2 psutil
+mock needs to be version 0.7.2 and lxml needs 2.3.2
+
+    pip install amqplib==1.0.2 python-geohash==0.8.4 mock==0.7.2 lxml==2.3.2 psutil==1.1.3
 
 ## Celery
     pip install Celery==2.5.5
@@ -69,7 +73,7 @@ With versions > 1.6.0 lot of tasks (both on the engine and the hazardlib) fail.
     pip install redis
 
 ## Django
-    pip install django==1.4.5
+    pip install django==1.4.9
 
 ## Postgres (9.1) and psycopg2
 __PostGIS 1.5 is required and is incompatible with PostgreSQL 9.2, so PostgreSQL 9.1 is used instead__
@@ -80,7 +84,7 @@ see http://trac.osgeo.org/postgis/wiki/UsersWikiPostgreSQLPostGIS
     make
     make install
 
-    pip install psycopg2
+    pip install psycopg2==2.5.1
 
 ## Swig _(Geos dep.)_
     wget http://prdownloads.sourceforge.net/swig/swig-2.0.9.tar.gz
@@ -186,7 +190,7 @@ Apply 'create_oq_schema.patch' patch (supposing __/home/openquaker__ as homedir)
 
 ## Run some tests
 
-    pip install nose
+    pip install nose==1.3.0
     cd ~/openquake/oq-engine
     nosetests -v --with-xunit --with-coverage --cover-package=openquake.engine --with-doctest -x tests/
 
