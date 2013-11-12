@@ -32,7 +32,7 @@ Login as unprivileged user: i.e. "openquaker". __DO NOT USE "openquake"!__
     cp /usr/lib64/libblas.so /usr/lib64/liblapack.so ~/local/lib64
 
 ## numpy (1.6.0)
-    With versions > 1.6.0 lot of tasks (both on the engine and the hazardlib) fail.
+With versions > 1.6.0 lot of tasks (both on the engine and the hazardlib) fail.
 
     pip install numpy==1.6.0
 
