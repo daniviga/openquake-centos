@@ -1,8 +1,15 @@
 __work in progress__ tested with OpenQuake Engine (oq-engine) master commit __e62244f85173a69ba880fe94d0b53120231478ee__
 
+## User environment
+
 * Login as unprivileged user: i.e. "openquaker". __DO NOT USE "openquake"!__
 * Move, or merge __bash\_profile__ from this GIT repo to __~/.bash\_profile__
 * If you want to use _screen_ it's highly recommended to move (or merge) __screenrc__ from this GIT repo to __~/.screenrc__
+* A text editor is obviously needed
+
+### Create base folders
+    cd ~
+    mkdir bin local log openquake src
 
 
 ## Build System (CentOS 5, needs sudo or root)
