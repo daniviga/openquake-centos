@@ -1,12 +1,15 @@
 __work in progress__ tested with OpenQuake Engine (oq-engine) master commit __e62244f85173a69ba880fe94d0b53120231478ee__
 
-Login as unprivileged user: i.e. "openquaker". __DO NOT USE "openquake"!__
+* Login as unprivileged user: i.e. "openquaker". __DO NOT USE "openquake"!__
+* Move, or merge __bash\_profile__ from this GIT repo to __~/.bash\_profile__
+* If you want to use _screen_ it's highly recommended to move (or merge) __screenrc__ from this GIT repo to __~/.screenrc__
+
 
 ## Build System (CentOS 5, needs sudo or root)
-    sudo yum install bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-devel.x86_64 zlib*.x86_64 make.x86_64 ncurses-devel.x86_64 bzip2-devel.x86_64 readline-devel.x86_64 zip.x86_64 unzip.x86_64 nc.x86_64 curl-devel.x86_64 expat-devel.x86_64 gettext.x86_64 gettext-devel.x86_64 xmlto.x86_64 patch.x86_64
+    sudo yum install bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-devel.x86_64 zlib*.x86_64 make.x86_64 ncurses-devel.x86_64 bzip2-devel.x86_64 readline-devel.x86_64 zip.x86_64 unzip.x86_64 nc.x86_64 curl-devel.x86_64 expat-devel.x86_64 gettext.x86_64 gettext-devel.x86_64 xmlto.x86_64 patch.x86_64 gcc-gfortran.x86_64 compat-gcc-34-g77.x86_64 libgfortran.x86_64 blas*.x86_64 lapack*.x86_64 libxslt.x86_64 libxslt-devel.x86_64 unixODBC-devel.x86_64
 
 ## Build System (CentOS 6, needs sudo or root)
-    sudo yum install bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-devel.x86_64 zlib*.x86_64 make.x86_64 ncurses-devel.x86_64 bzip2-devel.x86_64 readline-devel.x86_64 zip.x86_64 unzip.x86_64 nc.x86_64 libcurl-devel.x86_64 expat-devel.x86_64 gettext.x86_64 gettext-devel.x86_64 xmlto.x86_64 perl-ExtUtils-MakeMaker.x86_64 pcre.x86_64 pcre-devel.x86_64 patch.x86_64
+    sudo yum install bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-devel.x86_64 zlib*.x86_64 make.x86_64 ncurses-devel.x86_64 bzip2-devel.x86_64 readline-devel.x86_64 zip.x86_64 unzip.x86_64 nc.x86_64 libcurl-devel.x86_64 expat-devel.x86_64 gettext.x86_64 gettext-devel.x86_64 xmlto.x86_64 perl-ExtUtils-MakeMaker.x86_64 pcre.x86_64 pcre-devel.x86_64 patch.x86_64 gcc-gfortran.x86_64 compat-gcc-34-g77.x86_64 libgfortran.x86_64 blas*.x86_64 lapack*.x86_64 libxslt.x86_64 libxslt-devel.x86_64 unixODBC-devel.x86_64
 
 ## Git
     wget https://git-core.googlecode.com/files/git-1.8.4.3.tar.gz
@@ -27,8 +30,8 @@ Login as unprivileged user: i.e. "openquaker". __DO NOT USE "openquake"!__
     python2.7 setup.py install
 
 ## numpy & scipy deps.
-    sudo yum install -y gcc-gfortran.x86_64 compat-gcc-34-g77.x86_64 libgfortran.x86_64
-    sudo yum install blas*.x86_64 lapack*.x86_64
+The best way is to use, for libblas and liblapack, the .so provided by offical RPMs. Recompiling both requires too much effort.
+
     cp /usr/lib64/libblas.so /usr/lib64/liblapack.so ~/local/lib64
 
 ## numpy (1.6.2)
@@ -42,7 +45,6 @@ The latest version as writing is 0.13.0 and all tests are green.
     pip install scipy==0.13.0
 
 ## erlang _(RabbitMQ dep.)_
-    sudo yum install libxslt.x86_64 libxslt-devel.x86_64 unixODBC-devel.x86_64
     wget http://www.erlang.org/download/otp_src_R16B02.tar.gz
     ./configure
     make
