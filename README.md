@@ -179,10 +179,10 @@ PostGIS 2.0.2 does not work with current OpenQuake, because as mentioned in http
 
 ## Get OpenQuake
     mkdir ~/openquake; cd ~/openquake
-    git clone git://github.com/gem/oq-engine.git
-    git clone git://github.com/gem/oq-risklib.git
-    git clone git://github.com/gem/oq-nrmllib.git
-    git clone git://github.com/gem/oq-hazardlib.git
+    git clone https://github.com/gem/oq-engine.git
+    git clone https://github.com/gem/oq-risklib.git
+    git clone https://github.com/gem/oq-nrmllib.git
+    git clone httos://github.com/gem/oq-hazardlib.git
 
 ## Setup OpenQuake
 
