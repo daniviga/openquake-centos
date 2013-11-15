@@ -224,7 +224,6 @@ cd postgis-1.5.8
 ./configure --prefix=$HOME/local --with-projdir=$HOME/local
 make
 make install
-
 cp $HOME/src/postgis-1.5.8/doc/postgis_comments.sql $HOME/local/share/postgresql/contrib/postgis-1.5
 ```
 
@@ -258,8 +257,8 @@ echo "GEOS_LIBRARY_PATH = '$HOME/local/lib/libgeos_c.so'" >> openquake/engine/se
 
 ## Build hazardlib speedups
 ```bash
-    cd ~/openquake/oq-hazardlib
-    python setup.py build_ext
+cd ~/openquake/oq-hazardlib
+python setup.py build_ext
 ```
 
 ## Run OpenQuake
