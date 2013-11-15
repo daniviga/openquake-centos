@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+set -o pipefail
+
 function run_tests {
     cd ~/openquake/oq-engine
     nosetests -v --with-xunit --with-coverage --cover-package=openquake.engine --with-doctest -x tests/
