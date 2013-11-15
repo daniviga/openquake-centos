@@ -53,15 +53,15 @@ make install
 ## setuptools
 ```bash
 cd ~/src
-wget http://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg
+wget --no-check-certificate http://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg
 /bin/bash setuptools-0.6c11-py2.7.egg
 ```
 
 ## pip
 ```bash
 cd ~/src
-wget http://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz
-tar pip-1.4.1.tar.gz
+wget --no-check-certificate http://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz
+tar xzf pip-1.4.1.tar.gz
 cd pip-1.4.1
 python2.7 setup.py install
 ```
