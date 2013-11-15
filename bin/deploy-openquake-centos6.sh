@@ -23,7 +23,7 @@ function setup_env {
     ## Create base folders
     cd ~
     mkdir bin local log openquake src
-    cat <<EOF > ~/.bash_profile
+    cat <<EOF >> ~/.bash_profile
 PATH=$HOME/openquake/oq-engine/bin:$HOME/local/bin:$HOME/local/sbin:$PATH:$HOME/bin
 LD_LIBRARY_PATH=$HOME/local/lib:$HOME/local/lib64
 CPATH=$HOME/local/include
@@ -39,7 +39,7 @@ export PYTHONPATH
 export PGDATA
 EOF
 
-    cat <<EOF > ~/.screenrc
+    cat <<EOF >> ~/.screenrc
 # make the shell in every window as your login shell
 shell -$SHELL
 EOF
