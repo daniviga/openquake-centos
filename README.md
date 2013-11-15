@@ -1,10 +1,10 @@
 __work in progress__ tested with OpenQuake Engine commits:
 
 ```
-    oq-engine:    e62244f85173a69ba880fe94d0b53120231478ee
-    oq-hazardlib: b8f82fe629d6cf4315a919ba8b76165f6a2517b3
-    oq-nrmllib:   ec9b0f8796a8e4a00f59a7d11c9b3889588058ea
-    oq-risklib:   1a429d09a163641655b8a83d250407c7033d3eaf
+oq-engine:    e62244f85173a69ba880fe94d0b53120231478ee
+oq-hazardlib: b8f82fe629d6cf4315a919ba8b76165f6a2517b3
+oq-nrmllib:   ec9b0f8796a8e4a00f59a7d11c9b3889588058ea
+oq-risklib:   1a429d09a163641655b8a83d250407c7033d3eaf
 ```
 
 ## User environment
