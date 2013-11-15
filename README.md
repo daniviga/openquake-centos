@@ -299,7 +299,7 @@ usage: openquake [-h] [--version] [--log-file LOG_FILE]
 Apply 'create\_oq\_schema.patch' patch (supposing __/home/openquaker__ as homedir) then
 
 ```bash
-cd ~/openquake/oq-engine && ./bin/create_oq_schema --db-user=openquaker --db-name=openquake --schema-path=$HOME/openquake/oq-engine/openquake/engine/db/schema --yes
+cd ~/openquake/oq-engine && ./bin/create_oq_schema --db-user=openquaker --db-name=openquake --schema-path=$HOME/openquake/oq-engine/openquake/engine/db/schema
 ```
 
 ## Start services
