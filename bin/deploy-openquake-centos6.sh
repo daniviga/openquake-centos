@@ -221,7 +221,7 @@ python setup.py build_ext
 ~/bin/start-postgresql
 cd ~/openquake/oq-engine/bin
 patch -p0 < ~/src/openquake-centos5/oq-patches/create_oq_schema.patch
-./create_oq_schema --db-user=openquaker --db-name=openquake --schema-path=$HOME/openquake/oq-engine/openquake/engine/db/schema
+./create_oq_schema --db-user=openquaker --db-name=openquake --schema-path=$HOME/openquake/oq-engine/openquake/engine/db/schema --yes
 
 ### Start services
 ~/bin/stop-all
