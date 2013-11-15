@@ -153,7 +153,8 @@ cd postgresql-9.1.10
 ./configure --prefix=$HOME/local --with-python
 make
 make install
-
+```
+```bash
 pip install psycopg2==2.5.1
 ```
 
@@ -225,6 +226,8 @@ cd postgis-1.5.8
 ./configure --prefix=$HOME/local --with-projdir=$HOME/local
 make
 make install
+```
+```bash
 cp $HOME/src/postgis-1.5.8/doc/postgis_comments.sql $HOME/local/share/postgresql/contrib/postgis-1.5
 ```
 
