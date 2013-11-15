@@ -240,7 +240,7 @@ cd ~/openquake; git clone https://github.com/gem/oq-engine.git
 cd ~/openquake/oq-engine; git reset --hard e62244f85173a69ba880fe94d0b53120231478ee
 ```
 ```bash
-cd ~/openquake; git clone httos://github.com/gem/oq-hazardlib.git
+cd ~/openquake; git clone https://github.com/gem/oq-hazardlib.git
 cd ~/openquake/oq-hazardlib; git reset --hard b8f82fe629d6cf4315a919ba8b76165f6a2517b3
 ```
 ```bash
