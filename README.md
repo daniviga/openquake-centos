@@ -183,11 +183,21 @@ PostGIS 2.0.2 does not work with current OpenQuake, because as mentioned in http
     cp $HOME/src/postgis-1.5.8/doc/postgis_comments.sql $HOME/local/share/postgresql/contrib/postgis-1.5
 
 ## Get OpenQuake
-    mkdir ~/openquake; cd ~/openquake
-    git clone https://github.com/gem/oq-engine.git
-    git clone https://github.com/gem/oq-risklib.git
-    git clone https://github.com/gem/oq-nrmllib.git
-    git clone httos://github.com/gem/oq-hazardlib.git
+    mkdir ~/openquake
+
+    cd ~/openquake; git clone https://github.com/gem/oq-engine.git
+    cd ~/openquake/oq-engine; git reset --hard e62244f85173a69ba880fe94d0b53120231478ee
+
+    cd ~/openquake; git clone httos://github.com/gem/oq-hazardlib.git
+    cd ~/openquake/oq-hazardlib; git reset --hard b8f82fe629d6cf4315a919ba8b76165f6a2517b3
+
+    cd ~/openquake; git clone https://github.com/gem/oq-nrmllib.git
+    cd ~/openquake/oq-nrmllib; git reset --hard ec9b0f8796a8e4a00f59a7d11c9b3889588058ea
+
+
+    cd ~/openquake; git clone https://github.com/gem/oq-risklib.git
+    cd ~/openquake/oq-risklib; git reset --hard 1a429d09a163641655b8a83d250407c7033d3eaf
+
 
 ## Setup OpenQuake
 
