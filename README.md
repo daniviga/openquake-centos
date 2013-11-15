@@ -216,6 +216,7 @@ PostGIS 2.0.2 does not work with current OpenQuake, because as mentioned in http
 > Changed: 2.0.0 In prior versions of PostGIS ST\_GeomFromText('GEOMETRYCOLLECTION(EMPTY)') was allowed.
 > This is now illegal in PostGIS 2.0.0 to better conform with SQL/MM standards.
 > This should now be written as ST\_GeomFromText('GEOMETRYCOLLECTION EMPTY')
+
 ```bash
 cd ~/src
 wget http://download.osgeo.org/postgis/source/postgis-1.5.8.tar.gz
