@@ -98,7 +98,7 @@ cd otp_src_R16B02
 ./configure
 make
 make RELEASE_ROOT=$HOME/local/erlang release
-cd ~/local/erlang && ./Install ~/local/erlang
+cd ~/local/erlang && ./Install -minimal ~/local/erlang
 cd bin && for a in $(ls); do ln -s -t ~/local/bin ../erlang/bin/$a; done
 
 ## RabbitMQ
