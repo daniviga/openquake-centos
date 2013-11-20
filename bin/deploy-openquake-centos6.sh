@@ -218,6 +218,8 @@ echo "GEOS_LIBRARY_PATH = '$HOME/local/lib/libgeos_c.so'" >> openquake/engine/se
 ## Build hazardlib speedups
 cd ~/openquake/oq-hazardlib
 python setup.py build_ext
+cd openquake/hazardlib/geo
+ln -s ../../../build/lib.*/openquake/hazardlib/geo/*.so .
 
 ### DB setup
 ~/local/bin/initdb
