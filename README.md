@@ -53,15 +53,15 @@ make install
 ## setuptools
 ```bash
 cd ~/src
-wget http://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg
+wget --no-check-certificate http://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg
 /bin/bash setuptools-0.6c11-py2.7.egg
 ```
 
 ## pip
 ```bash
 cd ~/src
-wget http://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz
-tar pip-1.4.1.tar.gz
+wget --no-check-certificate http://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz
+tar xzf pip-1.4.1.tar.gz
 cd pip-1.4.1
 python2.7 setup.py install
 ```
@@ -96,7 +96,7 @@ cd otp_src_R16B02
 ./configure
 make
 make RELEASE_ROOT=$HOME/local/erlang release
-cd ~/local/erlang && ./Install ~/local/erlang
+cd ~/local/erlang && ./Install -minimal ~/local/erlang
 cd bin && for a in $(ls); do ln -s -t ~/local/bin ../erlang/bin/$a; done
 ```
 
@@ -240,7 +240,7 @@ cd ~/openquake; git clone https://github.com/gem/oq-engine.git
 cd ~/openquake/oq-engine; git reset --hard e62244f85173a69ba880fe94d0b53120231478ee
 ```
 ```bash
-cd ~/openquake; git clone httos://github.com/gem/oq-hazardlib.git
+cd ~/openquake; git clone https://github.com/gem/oq-hazardlib.git
 cd ~/openquake/oq-hazardlib; git reset --hard b8f82fe629d6cf4315a919ba8b76165f6a2517b3
 ```
 ```bash
@@ -263,6 +263,8 @@ echo "GEOS_LIBRARY_PATH = '$HOME/local/lib/libgeos_c.so'" >> openquake/engine/se
 ```bash
 cd ~/openquake/oq-hazardlib
 python setup.py build_ext
+cd openquake/hazardlib/geo
+ln -s ../../../build/lib.*/openquake/hazardlib/geo/*.so .
 ```
 
 ## Run OpenQuake
