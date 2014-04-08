@@ -237,19 +237,19 @@ mkdir ~/openquake
 ```
 ```bash
 cd ~/openquake; git clone https://github.com/gem/oq-engine.git
-cd ~/openquake/oq-engine; git reset --hard e62244f85173a69ba880fe94d0b53120231478ee
+cd ~/openquake/oq-engine; git reset --hard ffe5fbc0c5682653bcb9f2f88778ed0cf5f70c3e
 ```
 ```bash
 cd ~/openquake; git clone https://github.com/gem/oq-hazardlib.git
-cd ~/openquake/oq-hazardlib; git reset --hard b8f82fe629d6cf4315a919ba8b76165f6a2517b3
+cd ~/openquake/oq-hazardlib; git reset --hard 48c310974327a42fbd9c635ad08cfc797ba1ac9c
 ```
 ```bash
 cd ~/openquake; git clone https://github.com/gem/oq-nrmllib.git
-cd ~/openquake/oq-nrmllib; git reset --hard ec9b0f8796a8e4a00f59a7d11c9b3889588058ea
+cd ~/openquake/oq-nrmllib; git reset --hard 2c08215ca4ec163923fd9549e35f01b0c08e0c46
 ```
 ```bash
 cd ~/openquake; git clone https://github.com/gem/oq-risklib.git
-cd ~/openquake/oq-risklib; git reset --hard 1a429d09a163641655b8a83d250407c7033d3eaf
+cd ~/openquake/oq-risklib; git reset --hard 7c5af4a979cc234f406124dbebbcecea24d26452
 ```
 
 ## Setup OpenQuake
