@@ -196,8 +196,8 @@ cp $HOME/src/postgis-1.5.8/doc/postgis_comments.sql $HOME/local/share/postgresql
 
 ## Get useful stuff
 cd ~/src
-git clone https://github.com/daniviga/openquake-centos5.git
-cp -v ~/src/openquake-centos5/bin/* ~/bin/
+git clone https://github.com/daniviga/openquake-centos.git
+cp -v ~/src/openquake-centos/bin/* ~/bin/
 chmod +x ~/bin/*
 
 
@@ -225,7 +225,7 @@ ln -s ../../../build/lib.*/openquake/hazardlib/geo/*.so .
 ~/local/bin/initdb
 ~/bin/start-postgresql
 cd ~/openquake/oq-engine/bin
-patch -p0 < ~/src/openquake-centos5/oq-patches/create_oq_schema.patch
+patch -p0 < ~/src/openquake-centos/oq-patches/create_oq_schema.patch
 ./create_oq_schema --db-user=openquaker --db-name=openquake --schema-path=$HOME/openquake/oq-engine/openquake/engine/db/schema --yes
 
 ### Start services
