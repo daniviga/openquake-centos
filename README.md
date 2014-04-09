@@ -108,9 +108,9 @@ pip install scipy==0.13.0
 ## erlang _(RabbitMQ dep.)_
 ```bash
 cd ~/src
-wget http://www.erlang.org/download/otp_src_R16B02.tar.gz
-tar xzf otp_src_R16B02.tar.gz
-cd otp_src_R16B02
+wget http://www.erlang.org/download/otp_src_R14B04.tar.gz
+tar xzf otp_src_R14B04.tar.gz
+cd otp_src_R14B04
 ./configure
 make
 make RELEASE_ROOT=$HOME/local/erlang release
@@ -121,9 +121,9 @@ cd bin && for a in $(ls); do ln -s -t ~/local/bin ../erlang/bin/$a; done
 ## RabbitMQ
 ```bash
 cd ~/src
-wget http://www.rabbitmq.com/releases/rabbitmq-server/v3.0.2/rabbitmq-server-3.0.2.tar.gz
-tar xzf rabbitmq-server-3.0.2.tar.gz
-cd rabbitmq-server-3.0.2
+wget http://www.rabbitmq.com/releases/rabbitmq-server/v2.8.7/rabbitmq-server-2.8.7.tar.gz
+tar xzf rabbitmq-server-2.8.7.tar.gz
+cd rabbitmq-server-2.8.7
 export TARGET_DIR=~/local
 export SBIN_DIR=~/local/sbin
 export MAN_DIR=~/local/share/man/
