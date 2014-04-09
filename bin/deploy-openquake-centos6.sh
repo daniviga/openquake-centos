@@ -256,7 +256,7 @@ sleep 2
 ~/bin/start-all
 
 pm 'DONE!'
-pm 'daniele.vigano@globalquakemodel.org - Feedback is welcome!'
+pm 'Now, please run source ~/.bash_profile'
 
 ### Run a real computation test
 #cd ~/openquake/oq-engine
