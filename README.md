@@ -7,7 +7,25 @@ oq-nrmllib:   ec9b0f8796a8e4a00f59a7d11c9b3889588058ea
 oq-risklib:   1a429d09a163641655b8a83d250407c7033d3eaf
 ```
 
-## User environment
+## Automatic deploy
+
+### User environment
+
+* Login as unprivileged user: i.e. "openquaker". __DO NOT USE "openquake"!__
+* Requirements are: sudo and wget
+
+### Deploy script
+
+As normal user (see above) run:
+
+```bash
+wget -O- https://raw.githubusercontent.com/daniviga/openquake-centos/master/bin/deploy-openquake-centos6.sh | tee install.log
+```
+
+
+## Manual deploy
+
+### User environment
 
 * Login as unprivileged user: i.e. "openquaker". __DO NOT USE "openquake"!__
 * Move, or merge __bash\_profile__ from this GIT repo to __~/.bash\_profile__
