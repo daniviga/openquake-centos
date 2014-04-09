@@ -121,15 +121,6 @@ pip install amqplib==1.0.2 python-geohash==0.8.4 mock==0.7.2 lxml==2.3.2 psutil=
 ## Celery
 pip install Celery==2.5.5
 
-## redis
-cd ~/src
-wget http://download.redis.io/releases/redis-2.6.16.tar.gz
-tar xzf redis-2.6.16.tar.gz
-cd redis-2.6.16
-make
-make PREFIX=$HOME/local install
-pip install redis
-
 ## Django
 pip install django==1.4.9
 
