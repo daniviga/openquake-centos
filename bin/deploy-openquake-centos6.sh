@@ -193,15 +193,6 @@ cd proj-4.8.0
 make
 make install
 
-## GDAL _(PostGIS dep.)_
-cd ~/src
-wget http://download.osgeo.org/gdal/gdal-1.9.2.tar.gz
-tar xzf gdal-1.9.2.tar.gz
-cd gdal-1.9.2
-./configure --prefix=$HOME/local --with-python --with-pg --with-geos --with-static-proj5
-make
-make install
-
 ## Shapely (1.2.14)
 pip install Shapely==1.2.14
 

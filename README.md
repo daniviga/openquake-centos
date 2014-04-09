@@ -200,17 +200,6 @@ make
 make install
 ```
 
-## GDAL _(PostGIS dep.)_
-```bash
-cd ~/src
-wget http://download.osgeo.org/gdal/gdal-1.9.2.tar.gz
-tar xzf gdal-1.9.2.tar.gz
-cd gdal-1.9.2
-./configure --prefix=$HOME/local --with-python --with-pg --with-geos --with-static-proj5
-make
-make install
-```
-
 ## Shapely (1.2.14)
 Shapely 1.2.17 does not work: wkt.ReadingError method no more available.
 Is better to install Shapely after Geos so it can use Geos speedups
