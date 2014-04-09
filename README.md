@@ -12,7 +12,7 @@ oq-risklib:   1a429d09a163641655b8a83d250407c7033d3eaf
 ### User environment
 
 * Login as unprivileged user: i.e. "openquaker". __DO NOT USE "openquake"!__
-* Requirements are: sudo and wget
+* Requirements are: ```sudo``` and ```wget```
 
 ### Deploy script
 
