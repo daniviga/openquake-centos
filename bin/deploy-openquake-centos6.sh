@@ -49,14 +49,22 @@ EOF
     . ~/.bash_profile
 }
 
+function pm {
+    echo -e "\n### $1 ###\n"
+}
+
 
 ## User environment
+
+pm 'Environment setup'
 setup_env
 
 ## Build System (CentOS 6)
+pm 'Installing pre-requisites'
 sudo yum install -y bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-devel.x86_64 zlib*.x86_64 make.x86_64 ncurses-devel.x86_64 bzip2-devel.x86_64 readline-devel.x86_64 zip.x86_64 unzip.x86_64 nc.x86_64 libcurl-devel.x86_64 expat-devel.x86_64 gettext.x86_64 gettext-devel.x86_64 xmlto.x86_64 perl-ExtUtils-MakeMaker.x86_64 pcre.x86_64 pcre-devel.x86_64 patch.x86_64 gcc-gfortran.x86_64 compat-gcc-34-g77.x86_64 libgfortran.x86_64 blas*.x86_64 lapack*.x86_64 libxslt.x86_64 libxslt-devel.x86_64 unixODBC-devel.x86_64
 
 ## Git
+pm 'Installing GIT'
 cd ~/src
 wget https://git-core.googlecode.com/files/git-1.8.4.3.tar.gz
 tar xzf git-1.8.4.3.tar.gz
@@ -64,6 +72,7 @@ cd git-1.8.4.3
 make prefix=$HOME/local install
 
 ## Python 2.7
+pm 'Installing Python'
 cd ~/src
 wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz
 tar xzf Python-2.7.6.tgz
@@ -88,12 +97,24 @@ python2.7 setup.py install
 cp /usr/lib64/libblas.so /usr/lib64/liblapack.so ~/local/lib64
 
 ## numpy (1.6.2)
+pm 'Installing NumPy'
 pip install numpy==1.6.2
 
 ## scipy
+pm 'Installing SciPy'
 pip install scipy==0.13.0
 
+## pip various dep
+pip install amqplib==1.0.2 python-geohash==0.8.4 mock==0.7.2 lxml==2.3.2 psutil==1.1.3 nose==1.3.0
+
+## Celery
+pip install Celery==2.5.5
+
+## Django
+pip install django==1.4.9
+
 ## erlang _(RabbitMQ dep.)_
+pm 'Installing Erlang'
 cd ~/src
 wget http://www.erlang.org/download/otp_src_R16B02.tar.gz
 tar xzf otp_src_R16B02.tar.gz
@@ -105,6 +126,7 @@ cd ~/local/erlang && ./Install -minimal ~/local/erlang
 cd bin && for a in $(ls); do ln -s -t ~/local/bin ../erlang/bin/$a; done
 
 ## RabbitMQ
+pm 'Installing RabbitMQ'
 cd ~/src
 wget http://www.rabbitmq.com/releases/rabbitmq-server/v3.0.2/rabbitmq-server-3.0.2.tar.gz
 tar xzf rabbitmq-server-3.0.2.tar.gz
@@ -115,16 +137,8 @@ export MAN_DIR=~/local/share/man/
 export MNESIA_DIR=~/local/var/rabbitmq
 make && make install
 
-## pip various dep
-pip install amqplib==1.0.2 python-geohash==0.8.4 mock==0.7.2 lxml==2.3.2 psutil==1.1.3 nose==1.3.0
-
-## Celery
-pip install Celery==2.5.5
-
-## Django
-pip install django==1.4.9
-
 ## Postgres (9.1)
+pm 'Installing PostgreSQL'
 cd ~/src
 wget http://ftp.postgresql.org/pub/source/v9.1.10/postgresql-9.1.10.tar.gz
 tar xzf postgresql-9.1.10.tar.gz
@@ -186,6 +200,7 @@ make install
 cp $HOME/src/postgis-1.5.8/doc/postgis_comments.sql $HOME/local/share/postgresql/contrib/postgis-1.5
 
 ## Get useful stuff
+pm 'Installing OpenQuake'
 cd ~/src
 git clone https://github.com/daniviga/openquake-centos.git
 cp -v ~/src/openquake-centos/bin/* ~/bin/
@@ -224,7 +239,8 @@ patch -p0 < ~/src/openquake-centos/oq-patches/create_oq_schema.patch
 sleep 2
 ~/bin/start-all
 
-echo "DONE!"
+pm 'DONE!'
+pm 'daniele.vigano@globalquakemodel.org - Feedback is welcome!'
 
 ### Run a real computation test
 #cd ~/openquake/oq-engine
