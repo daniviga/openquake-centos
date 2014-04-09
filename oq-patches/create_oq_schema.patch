@@ -1,5 +1,5 @@
---- create_oq_schema.orig	2013-11-11 16:54:49.891001870 +0100
-+++ create_oq_schema	2013-11-11 17:09:45.054000126 +0100
+--- oq_create_db.orig	2014-04-09 17:29:59.000000000 +0200
++++ oq_create_db	2014-04-09 17:29:30.000000000 +0200
 @@ -30,7 +30,7 @@
  psql_batch_options='--set ON_ERROR_STOP=1'
 
@@ -18,18 +18,19 @@
 
  this_is_linux=0
  # Are we running on linux?
-@@ -199,13 +199,13 @@
+@@ -197,14 +197,13 @@
  psql -p $db_port -d postgres -U $db_admin_user -c "CREATE DATABASE $db_name" $psql_batch_options
  createlang -p $db_port -d $db_name -U $db_admin_user plpythonu
 
--postgis="/usr/share/postgresql/9.1/contrib/postgis-1.5"
+-postgres_contrib="/usr/share/postgresql/9.1/contrib"
+-postgis="$postgres_contrib/postgis-1.5"
 +postgis="/home/openquaker/local/share/postgresql/contrib/postgis-1.5"
  # Load the PostGIS stuff into the newly created OpenQuake database.
  echo ".. Loading postgis functions/data into $db_name .."
  psql -p $db_port -U $db_admin_user $psql_batch_options -d $db_name -f $postgis/postgis.sql
 
  psql -p $db_port -U $db_admin_user $psql_batch_options -d $db_name -f $postgis/spatial_ref_sys.sql
--psql -p $db_port -U $db_admin_user $psql_batch_options -d $db_name -f /usr/share/postgresql/9.1/contrib/postgis_comments.sql
+-psql -p $db_port -U $db_admin_user $psql_batch_options -d $db_name -f $postgres_contrib/postgis_comments.sql
 +psql -p $db_port -U $db_admin_user $psql_batch_options -d $db_name -f $postgis/postgis_comments.sql
 
  echo ".. Running schema definition file: $schema_file .."
