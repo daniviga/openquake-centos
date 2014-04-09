@@ -19,7 +19,7 @@ oq-risklib:   1a429d09a163641655b8a83d250407c7033d3eaf
 As normal user (see above) run:
 
 ```bash
-wget -O- https://raw.githubusercontent.com/daniviga/openquake-centos/master/bin/deploy-openquake-centos6.sh | tee install.log
+wget -O- https://raw.githubusercontent.com/daniviga/openquake-centos/master/bin/deploy-openquake-centos6.sh | bash | tee install.log
 ```
 
 
