@@ -1,4 +1,4 @@
-__work in progress__ tested with OpenQuake Engine commits:
+__work in progress__ tested on __CentOS 6.5__ with OpenQuake Engine commits:
 
 ```
 oq-engine:    e62244f85173a69ba880fe94d0b53120231478ee
