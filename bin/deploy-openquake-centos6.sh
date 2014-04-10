@@ -43,6 +43,9 @@ function setup_env {
     cd ~
     mkdir bin local log openquake src
     cat <<EOF >> ~/.bash_profile
+
+## Lines below were added by OpenQuake deployment script
+
 PATH=$HOME/openquake/oq-engine/bin:$HOME/local/bin:$HOME/local/sbin:$PATH:$HOME/bin
 LD_LIBRARY_PATH=$HOME/local/lib:$HOME/local/lib64
 CPATH=$HOME/local/include
