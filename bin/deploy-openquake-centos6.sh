@@ -39,6 +39,11 @@ function run_tests {
 }
 
 function setup_env {
+
+    if [[ $(whoami) == "openquake" ]]; then
+        echo "ERROR: this script can not be run as 'openquake'. Please run it with another user." >&2 && exit 1
+    fi
+
     ## Create base folders
     cd ~
     mkdir bin local log openquake src
