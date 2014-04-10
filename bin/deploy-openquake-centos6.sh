@@ -124,7 +124,7 @@ pm 'Installing SciPy'
 pip install scipy==0.13.0
 
 ## pip various dep
-pip install amqplib==1.0.2 python-geohash==0.8.4 mock==0.7.2 lxml==2.3.2 psutil==1.1.3 nose==1.3.0
+pip install amqplib==1.0.2 python-geohash==0.8.4 mock==0.7.2 lxml==3.3.4 psutil==1.1.3 nose==1.3.0
 
 ## Celery
 pip install Celery==2.5.5
