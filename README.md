@@ -134,7 +134,7 @@ make && make install
 ## pip various dep
 mock needs to be version 0.7.2 and lxml 3.3.4 is required (2.3.2 doesn't work anymore on CentOS 6.5)
 ```bash
-pip install amqplib==1.0.2 python-geohash==0.8.4 mock==0.7.2 lxml==3.3.4 psutil==1.1.3
+pip install amqplib==1.0.2 python-geohash==0.8.4 mock==0.7.2 lxml==3.3.4 psutil==1.1.3 futures==2.1.6
 ```
 
 ## Celery
