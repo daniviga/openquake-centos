@@ -19,7 +19,7 @@
 set -e
 set -o pipefail
 
-OQPREFIX='/opt/openquake/'
+OQPREFIX='/opt/openquake'
 
 function run_tests {
     cd $OQPREFIX/openquake/oq-engine
@@ -152,7 +152,7 @@ cd otp_src_R14B04
 make
 make RELEASE_ROOT=$OQPREFIX/local/erlang release
 cd $OQPREFIX/local/erlang && ./Install -minimal $OQPREFIX/local/erlang
-cd bin && for a in $(ls); do ln -s -t $OQPREFIX/local/bin ../erlang/bin/$a; done
+cd bin && for a in $(ls); do ln -f -s -t $OQPREFIX/local/bin ../erlang/bin/$a; done
 
 ## RabbitMQ
 pm 'Installing RabbitMQ'
@@ -247,7 +247,7 @@ echo "GEOS_LIBRARY_PATH = '$OQPREFIX/local/lib/libgeos_c.so'" >> openquake/engin
 cd $OQPREFIX/openquake/oq-hazardlib
 python setup.py build_ext
 cd openquake/hazardlib/geo
-ln -s ../../../build/lib.*/openquake/hazardlib/geo/*.so .
+ln -f -s ../../../build/lib.*/openquake/hazardlib/geo/*.so .
 
 exit 133
 
