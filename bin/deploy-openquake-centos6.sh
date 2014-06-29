@@ -48,8 +48,9 @@ function setup_env {
 
     ## Create base folders
     if [ ! -d $OQPREFIX ]; then
-        cd $OQPREFIX
+        mkdir $OQPREFIX
     fi
+    cd $OQPREFIX
     mkdir bin local log openquake src
     cat <<EOF >> $OQPREFIX/env.sh
 
