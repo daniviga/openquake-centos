@@ -92,8 +92,8 @@ function setup_db {
     cat <<EOF >> $OQPREFIX/local/var/postgresql/postgresql.conf
 standard_conforming_strings = off
 EOF
-    sed -i "s/_OQPREFIX_/$OQPREFIX/g" $OQPREFIX/src/openquake-centos/oq-patches/create_oq_schema.patch
-    sed -i "s/_OQUSER_/$OQUSER/g" $OQPREFIX/src/openquake-centos/oq-patches/create_oq_schema.patch
+    sed -i "s|_OQPREFIX_|$OQPREFIX|g" $OQPREFIX/src/openquake-centos/oq-patches/create_oq_schema.patch
+    sed -i "s|_OQUSER_|$OQUSER|g" $OQPREFIX/src/openquake-centos/oq-patches/create_oq_schema.patch
     cd $OQPREFIX/openquake/oq-engine/bin
     patch -p0 < $OQPREFIX/src/openquake-centos/oq-patches/create_oq_schema.patch
 }
