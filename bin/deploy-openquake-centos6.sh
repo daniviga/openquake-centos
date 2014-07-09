@@ -160,7 +160,7 @@ pip install amqplib==1.0.2 python-geohash==0.8.4 mock==0.7.2 lxml==3.3.4 psutil=
 pip install Celery==2.5.5
 
 ## Django
-pip install django==1.4.9
+pip install django==1.3.1
 
 ## erlang _(RabbitMQ dep.)_
 pm 'Installing Erlang'
@@ -281,7 +281,6 @@ sleep 2
 $OQPREFIX/bin/start-all
 
 pm 'DONE!'
-pm 'Now, please run source $OQPREFIX/.bash_profile'
 
 ### Run a real computation test
 #cd $OQPREFIX/openquake/oq-engine
