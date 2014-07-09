@@ -271,6 +271,7 @@ cd openquake/hazardlib/geo
 ln -f -s ../../../build/lib.*/openquake/hazardlib/geo/*.so .
 
 chown -R $OQUSER.$OQUSER $OQPREFIX
+chmod 755 $OQPREFIX
 
 ### DB setup
 setup_db
