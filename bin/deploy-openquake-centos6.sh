@@ -275,9 +275,9 @@ chmod 755 $OQPREFIX
 
 ### DB setup
 setup_db
+su -u $OQUSER -c "$OQPREFIX/local/bin/pg_ctl -D $OQPREFIX/local/var/postgresql -l $OQPREFIX/postgresql-main.log start"
+su -u $OQUSER -c "$OQPREFIX/openquake/oq-engine/bin/create_oq_schema --schema-path=$OQPREFIX/openquake/oq-engine/openquake/engine/db/schema --yes"
 exit 133
-$OQPREFIX/bin/start-postgresql
-./create_oq_schema --schema-path=$OQPREFIX/openquake/oq-engine/openquake/engine/db/schema --yes
 
 ### Start services
 $OQPREFIX/bin/stop-all
