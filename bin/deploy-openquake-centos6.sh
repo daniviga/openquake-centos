@@ -16,10 +16,12 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+set -x
 set -e
 set -o pipefail
 
 OQPREFIX='/opt/openquake'
+OQUSER='oq-engine'
 
 function run_tests {
     cd $OQPREFIX/openquake/oq-engine
@@ -46,10 +48,12 @@ function setup_env {
         echo "ERROR: this script can not be run as 'openquake'. Please run it with another user." >&2 && exit 1
     fi
 
-    ## Create base folders
+    /usr/sbin/adduser -d $OQPREFIX $OQUSER
+
     if [ ! -d $OQPREFIX ]; then
         mkdir $OQPREFIX
     fi
+
     cd $OQPREFIX
     mkdir bin local log openquake src
     cat <<EOF >> $OQPREFIX/env.sh
@@ -69,6 +73,10 @@ export CPATH
 
 export PYTHONPATH
 export PGDATA
+EOF
+
+    cat <<EOF >> $OQPREFIX/.bash_profile
+source $OQPREFIX/env.sh
 EOF
 
     cat <<EOF >> $HOME/.screenrc
