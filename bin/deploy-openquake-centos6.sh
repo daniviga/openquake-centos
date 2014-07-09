@@ -269,6 +269,8 @@ python setup.py build_ext
 cd openquake/hazardlib/geo
 ln -f -s ../../../build/lib.*/openquake/hazardlib/geo/*.so .
 
+chown -R $OQUSER.$OQUSER $OQPREFIX
+
 ### DB setup
 setup_db
 exit 133
