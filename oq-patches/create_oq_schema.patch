@@ -5,7 +5,7 @@
 
  # Where do the table spaces live?
 -tspace_path='/var/lib/postgresql/9.1/main/ts'
-+tspace_path='_OQPREFIX_/local/var/postgtresql/ts'
++tspace_path='_OQPREFIX_/local/var/postgresql/ts'
  # What table spaces should be created?
  tspace_list="admin hzrdi hzrdr riski riskr uiapi htemp"
 
