@@ -48,6 +48,7 @@ function setup_env {
         echo "ERROR: this script can not be run as 'openquake'. Please run it with another user." >&2 && exit 1
     fi
 
+    pm "Creating $OQPREFIX with owner $OQUSER"
     /usr/sbin/adduser -d $OQPREFIX $OQUSER
 
     if [ ! -d $OQPREFIX ]; then
