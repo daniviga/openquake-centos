@@ -86,6 +86,18 @@ EOF
     source $OQPREFIX/env.sh
 }
 
+function setup_db {
+    su - $OQUSER -c "source $OQPREFIX/env.sh; $OQPREFIX/local/bin/initdb"
+    cat <<EOF >> $OQPREFIX/local/var/postgresql/postgresql.conf
+standard_conforming_strings = off
+EOF
+    sed -i "s/_OQPREFIX_/$OQPREFIX/g" $OQPREFIX/src/openquake-centos/oq-patches/create_oq_schema.patch
+    sed -i "s/_OQUSER_/$OQUSER/g" $OQPREFIX/src/openquake-centos/oq-patches/create_oq_schema.patch
+    cd $OQPREFIX/openquake/oq-engine/bin
+    patch -p0 < $OQPREFIX/src/openquake-centos/oq-patches/create_oq_schema.patch
+}
+
+
 function pm {
     echo -e "\n### $1 ###\n"
 }
@@ -257,14 +269,11 @@ python setup.py build_ext
 cd openquake/hazardlib/geo
 ln -f -s ../../../build/lib.*/openquake/hazardlib/geo/*.so .
 
-exit 133
-
 ### DB setup
-$OQPREFIX/local/bin/initdb
+setup_db
+exit 133
 $OQPREFIX/bin/start-postgresql
-cd $OQPREFIX/openquake/oq-engine/bin
-patch -p0 < $OQPREFIX/src/openquake-centos/oq-patches/create_oq_schema.patch
-./create_oq_schema --db-user=openquaker --db-name=openquake --schema-path=$OQPREFIX/openquake/oq-engine/openquake/engine/db/schema --yes
+./create_oq_schema --schema-path=$OQPREFIX/openquake/oq-engine/openquake/engine/db/schema --yes
 
 ### Start services
 $OQPREFIX/bin/stop-all
