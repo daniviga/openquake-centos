@@ -1,11 +1,11 @@
---- oq_create_db.orig	2014-04-09 17:29:59.000000000 +0200
-+++ oq_create_db	2014-04-09 17:29:30.000000000 +0200
+--- ../openquake/engine/bin/oq_create_db        2014-07-08 18:09:27.191999982 +0200
++++ oq_create_db        2014-07-09 10:06:54.413999387 +0200
 @@ -30,7 +30,7 @@
  psql_batch_options='--set ON_ERROR_STOP=1'
 
  # Where do the table spaces live?
 -tspace_path='/var/lib/postgresql/9.1/main/ts'
-+tspace_path='/home/openquaker/local/var/postgtresql/ts'
++tspace_path='_OQREFIX_/local/var/postgtresql/ts'
  # What table spaces should be created?
  tspace_list="admin hzrdi hzrdr riski riskr uiapi htemp"
 
@@ -14,7 +14,7 @@
  fixtures=""
 
 -db_admin_user="postgres"
-+db_admin_user="openquaker"
++db_admin_user="_OQUSER_"
 
  this_is_linux=0
  # Are we running on linux?
@@ -24,7 +24,7 @@
 
 -postgres_contrib="/usr/share/postgresql/9.1/contrib"
 -postgis="$postgres_contrib/postgis-1.5"
-+postgis="/home/openquaker/local/share/postgresql/contrib/postgis-1.5"
++postgis="_OQPREFIX_/local/share/postgresql/contrib/postgis-1.5"
  # Load the PostGIS stuff into the newly created OpenQuake database.
  echo ".. Loading postgis functions/data into $db_name .."
  psql -p $db_port -U $db_admin_user $psql_batch_options -d $db_name -f $postgis/postgis.sql
