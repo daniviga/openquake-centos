@@ -1,0 +1,141 @@
+#!/bin/bash
+#
+#       /etc/rc.d/init.d/oq-engine
+#
+#       <description of the *service*>
+#       <any general comments about this init script>
+#
+# <tags -- see below for tag definitions.  *Every line* from the top
+#  of the file to the end of the tags section must begin with a #
+#  character.  After the tags section, there should be a blank line.
+#  This keeps normal comments in the rest of the file from being
+#  mistaken for tags, should they happen to fit the pattern.>
+
+# Source function library.
+. /etc/init.d/functions
+
+OQUSER=oq-engine
+OQPREFIX=/opt/openquake
+
+. $OQPREFIX/env.sh
+
+start_postgres() {
+        PSQL_START="Starting PostgreSQL service: "
+        echo $PSQL_START
+        su - $OQUSER -c "$OQPREFIX/local/bin/pg_ctl -D $OQPREFIX/local/var/postgresql -l $OQPREFIX/log/postgresql-main.log start &>/dev/null"
+        sleep 2
+        pid=`head -n 1 "$OQPREFIX/local/var/postgresql/postmaster.pid" 2>/dev/null`
+        if [ "x$pid" != x ]
+        then
+            success "$PSQL_START"
+        else
+            return 1
+        fi
+}
+
+stop_postgres() {
+        PSQL_STOP="Stopping PostgreSQL service: "
+        echo $PSQL_STOP
+        su - $OQUSER -c "$OQPREFIX/local/bin/pg_ctl -D $OQPREFIX/local/var/postgresql -s -m fast stop"
+        if [ $? -eq 0 ]
+        then
+            success "$PSQL_STOP"
+        else
+            failure "$PSQL_STOP"
+            return 1
+        fi
+}
+
+start_rabbitmq() {
+        RABBIT_START="Starting RabbitMQ service: "
+        echo $RABBIT_START
+        su - $OQUSER -c "RABBITMQ_PID_FILE=$OQPREFIX/local/var/rabbitmq/pid \
+        RABBITMQ_MNESIA_BASE=$OQPREFIX/local/var/rabbitmq/mnesia \
+        RABBITMQ_LOG_BASE=$OQPREFIX/local/var/rabbitmq/log \
+        $OQPREFIX/local/sbin/rabbitmq-server &> $OQPREFIX/log/rabbitmq-start.log &"
+        su - $OQUSER -c "$OQPREFIX/local/sbin/rabbitmqctl status &> /dev/null"
+        if [ $? -eq 0 ]
+        then
+            success $RABBIT_START
+        else
+            return 1
+        fi
+}
+
+stop_rabbitmq() {
+        RABBIT_STOP="Stopping RabbitMQ service: "
+        echo $RABBIT_STOP
+        su - $OQUSER -c "$OQPREFIX/local/sbin/rabbitmqctl stop &> /dev/null"
+        if [ $? -eq 0 ]
+        then
+            success $RABBIT_STOP
+        else
+            failure $RABBIT_STOP
+            return 1
+        fi
+        echo
+}
+
+start_celery() {
+        CELERY_START="Starting Celeryd service: "
+        echo $CELERY_START
+        su - $OQUSER -c "$OQPREFIX/local/bin/celeryd --purge &> $OQPREFIX/log/celeryd.log &"
+        if [ $? -eq 0 ]
+        then
+            success "$CELERY_START"
+        else
+            return 1
+        fi
+}
+
+stop_celery() {
+        CELERY_STOP="Stopping Celeryd service: "
+        echo -n $CELERY_STOP
+        killall -9 celeryd
+        if [ $? -eq 0 ]
+        then
+            success "$CELERY_STOP"
+        else
+            failure "$CELERY_STOP"
+            return 1
+        fi
+        echo
+}
+
+start() {
+        #echo -n "Starting the OpenQuake Engine stack: "
+        start_postgres
+        start_rabbitmq
+        sleep 5
+        start_celery
+        touch /var/lock/subsys/oq-engine-stack
+        return 0
+}
+
+stop() {
+        #echo -n "Shutting down the OpenQuake Engine stack: "
+        stop_postgres
+        stop_rabbitmq
+        stop_celery
+        rm -f /var/lock/subsys/oq-engine-stack
+        return 0
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: <servicename> {start|stop|restart]"
+        exit 1
+        ;;
+esac
+exit $?
+
