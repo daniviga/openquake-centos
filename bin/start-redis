@@ -1,6 +1,0 @@
-#!/bin/bash 
-
-# Development
-nohup ~/local/bin/redis-server --loglevel verbose &> ~/log/start-redis.log &
-# Production
-#nohup ~/local/bin/redis-server  &> ~/log/start-redis.log &

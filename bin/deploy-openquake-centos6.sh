@@ -16,11 +16,15 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+set -x
 set -e
 set -o pipefail
 
+OQPREFIX='/opt/openquake'
+OQUSER='oq-engine'
+
 function run_tests {
-    cd ~/openquake/oq-engine
+    cd $OQPREFIX/openquake/oq-engine
     nosetests -v --with-xunit --with-coverage --cover-package=openquake.engine --with-doctest -x tests/
 
     nosetests  -a 'qa,hazard,classical' -v --with-xunit --xunit-file=xunit-qa-hazard-classical.xml
@@ -44,19 +48,25 @@ function setup_env {
         echo "ERROR: this script can not be run as 'openquake'. Please run it with another user." >&2 && exit 1
     fi
 
-    ## Create base folders
-    cd ~
+    pm "Creating $OQPREFIX with owner $OQUSER"
+    /usr/sbin/adduser -d $OQPREFIX $OQUSER
+
+    if [ ! -d $OQPREFIX ]; then
+        mkdir $OQPREFIX
+    fi
+
+    cd $OQPREFIX
     mkdir bin local log openquake src
-    cat <<EOF >> ~/.bash_profile
+    cat <<EOF >> $OQPREFIX/env.sh
 
 ## Lines below were added by OpenQuake deployment script
 
-PATH=$HOME/openquake/oq-engine/bin:$HOME/local/bin:$HOME/local/sbin:$PATH:$HOME/bin
-LD_LIBRARY_PATH=$HOME/local/lib:$HOME/local/lib64
-CPATH=$HOME/local/include
+PATH=$OQPREFIX/openquake/oq-engine/bin:$OQPREFIX/local/bin:$OQPREFIX/local/sbin:$PATH:$OQPREFIX/bin
+LD_LIBRARY_PATH=$OQPREFIX/local/lib:$OQPREFIX/local/lib64
+CPATH=$OQPREFIX/local/include
 
-PYTHONPATH=.:$HOME/openquake/oq-engine:$HOME/openquake/oq-hazardlib:$HOME/openquake/oq-nrmllib:$HOME/openquake/oq-risklib
-PGDATA=$HOME/local/var/postgresql
+PYTHONPATH=.:$OQPREFIX/openquake/oq-engine:$OQPREFIX/openquake/oq-hazardlib:$OQPREFIX/openquake/oq-nrmllib:$OQPREFIX/openquake/oq-risklib:$OQPREFIX/openquake/oq-commonlib
+PGDATA=$OQPREFIX/local/var/postgresql
 
 export PATH
 export LD_LIBRARY_PATH
@@ -66,12 +76,26 @@ export PYTHONPATH
 export PGDATA
 EOF
 
-    cat <<EOF >> ~/.screenrc
+    cat <<EOF >> $OQPREFIX/.bash_profile
+source $OQPREFIX/env.sh
+EOF
+
+    cat <<EOF >> $HOME/.screenrc
 # make the shell in every window as your login shell
 shell -$SHELL
 EOF
-    . ~/.bash_profile
+    source $OQPREFIX/env.sh
 }
+
+function setup_db {
+    su - $OQUSER -c "source $OQPREFIX/env.sh; $OQPREFIX/local/bin/initdb"
+    cat <<EOF >> $OQPREFIX/local/var/postgresql/postgresql.conf
+standard_conforming_strings = off
+EOF
+    cd $OQPREFIX/openquake/oq-engine/bin
+    cat $OQPREFIX/src/openquake-centos/oq-patches/create_oq_schema.patch | sed "s|_OQPREFIX_|$OQPREFIX|g" | sed "s|_OQUSER_|$OQUSER|g" | patch -p0
+}
+
 
 function pm {
     echo -e "\n### $1 ###\n"
@@ -85,40 +109,40 @@ setup_env
 
 ## Build System (CentOS 6)
 pm 'Installing pre-requisites'
-sudo yum install -y bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-devel.x86_64 zlib*.x86_64 make.x86_64 ncurses-devel.x86_64 bzip2-devel.x86_64 readline-devel.x86_64 zip.x86_64 unzip.x86_64 nc.x86_64 libcurl-devel.x86_64 expat-devel.x86_64 gettext.x86_64 gettext-devel.x86_64 xmlto.x86_64 perl-ExtUtils-MakeMaker.x86_64 pcre.x86_64 pcre-devel.x86_64 patch.x86_64 gcc-gfortran.x86_64 compat-gcc-34-g77.x86_64 libgfortran.x86_64 blas*.x86_64 lapack*.x86_64 libxslt.x86_64 libxslt-devel.x86_64 unixODBC-devel.x86_64
+yum install -y bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-devel.x86_64 zlib*.x86_64 make.x86_64 ncurses-devel.x86_64 bzip2-devel.x86_64 readline-devel.x86_64 zip.x86_64 unzip.x86_64 nc.x86_64 libcurl-devel.x86_64 expat-devel.x86_64 gettext.x86_64 gettext-devel.x86_64 xmlto.x86_64 perl-ExtUtils-MakeMaker.x86_64 pcre.x86_64 pcre-devel.x86_64 patch.x86_64 gcc-gfortran.x86_64 compat-gcc-34-g77.x86_64 libgfortran.x86_64 blas*.x86_64 lapack*.x86_64 libxslt.x86_64 libxslt-devel.x86_64 unixODBC-devel.x86_64
 
 ## Git
 pm 'Installing GIT'
-cd ~/src
+cd $OQPREFIX/src
 wget https://git-core.googlecode.com/files/git-1.8.4.3.tar.gz
 tar xzf git-1.8.4.3.tar.gz
 cd git-1.8.4.3
-make prefix=$HOME/local install
+make prefix=$OQPREFIX/local install
 
 ## Python 2.7
 pm 'Installing Python'
-cd ~/src
+cd $OQPREFIX/src
 wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz
 tar xzf Python-2.7.6.tgz
 cd Python-2.7.6
-./configure --prefix=$HOME/local --enable-shared
+./configure --prefix=$OQPREFIX/local --enable-shared
 make
 make install
 
 ## setuptools
-cd ~/src
+cd $OQPREFIX/src
 wget --no-check-certificate http://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg
 /bin/bash setuptools-0.6c11-py2.7.egg
 
 ## pip
-cd ~/src
+cd $OQPREFIX/src
 wget --no-check-certificate http://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz
 tar xzf pip-1.4.1.tar.gz
 cd pip-1.4.1
 python2.7 setup.py install
 
 ## numpy & scipy deps.
-cp /usr/lib64/libblas.so /usr/lib64/liblapack.so ~/local/lib64
+cp /usr/lib64/libblas.so /usr/lib64/liblapack.so $OQPREFIX/local/lib64
 
 ## numpy (1.6.2)
 pm 'Installing NumPy'
@@ -135,39 +159,39 @@ pip install amqplib==1.0.2 python-geohash==0.8.4 mock==0.7.2 lxml==3.3.4 psutil=
 pip install Celery==2.5.5
 
 ## Django
-pip install django==1.4.9
+pip install django==1.3.1
 
 ## erlang _(RabbitMQ dep.)_
 pm 'Installing Erlang'
-cd ~/src
+cd $OQPREFIX/src
 wget http://www.erlang.org/download/otp_src_R14B04.tar.gz
 tar xzf otp_src_R14B04.tar.gz
 cd otp_src_R14B04
 ./configure
 make
-make RELEASE_ROOT=$HOME/local/erlang release
-cd ~/local/erlang && ./Install -minimal ~/local/erlang
-cd bin && for a in $(ls); do ln -s -t ~/local/bin ../erlang/bin/$a; done
+make RELEASE_ROOT=$OQPREFIX/local/erlang release
+cd $OQPREFIX/local/erlang && ./Install -minimal $OQPREFIX/local/erlang
+cd bin && for a in $(ls); do ln -f -s -t $OQPREFIX/local/bin ../erlang/bin/$a; done
 
 ## RabbitMQ
 pm 'Installing RabbitMQ'
-cd ~/src
+cd $OQPREFIX/src
 wget http://www.rabbitmq.com/releases/rabbitmq-server/v2.8.7/rabbitmq-server-2.8.7.tar.gz
 tar xzf rabbitmq-server-2.8.7.tar.gz
 cd rabbitmq-server-2.8.7
-export TARGET_DIR=~/local
-export SBIN_DIR=~/local/sbin
-export MAN_DIR=~/local/share/man/
-export MNESIA_DIR=~/local/var/rabbitmq
+export TARGET_DIR=$OQPREFIX/local
+export SBIN_DIR=$OQPREFIX/local/sbin
+export MAN_DIR=$OQPREFIX/local/share/man/
+export MNESIA_DIR=$OQPREFIX/local/var/rabbitmq
 make && make install
 
 ## Postgres (9.1)
 pm 'Installing PostgreSQL'
-cd ~/src
+cd $OQPREFIX/src
 wget http://ftp.postgresql.org/pub/source/v9.1.10/postgresql-9.1.10.tar.gz
 tar xzf postgresql-9.1.10.tar.gz
 cd postgresql-9.1.10
-./configure --prefix=$HOME/local --with-python
+./configure --prefix=$OQPREFIX/local --with-python
 make
 make install
 
@@ -175,29 +199,29 @@ make install
 pip install psycopg2==2.5.1
 
 ## Swig _(Geos dep.)_
-cd ~/src
+cd $OQPREFIX/src
 wget http://prdownloads.sourceforge.net/swig/swig-2.0.9.tar.gz
 tar xzf swig-2.0.9.tar.gz
 cd swig-2.0.9
-./configure --prefix=$HOME/local --without-alllang --with-python
+./configure --prefix=$OQPREFIX/local --without-alllang --with-python
 make
 make install
 
 ## Geos _(PostGIS dep.)_
-cd ~/src
+cd $OQPREFIX/src
 wget http://download.osgeo.org/geos/geos-3.3.7.tar.bz2
 tar xjf geos-3.3.7.tar.bz2
 cd geos-3.3.7
-CFLAGS="-m64" CPPFLAGS="-m64" CXXFLAGS="-m64" LDFLAGS="-m64" FFLAGS="-m64" LDFLAGS="-L/usr/lib64/" ./configure --prefix=$HOME/local --enable-python
+CFLAGS="-m64" CPPFLAGS="-m64" CXXFLAGS="-m64" LDFLAGS="-m64" FFLAGS="-m64" LDFLAGS="-L/usr/lib64/" ./configure --prefix=$OQPREFIX/local --enable-python
 make
 make install
 
 ## proj.4 _(PostGIS dep.)_
-cd ~/src
+cd $OQPREFIX/src
 wget http://download.osgeo.org/proj/proj-4.8.0.tar.gz
 tar xzf proj-4.8.0.tar.gz
 cd proj-4.8.0
-./configure --prefix=$HOME/local
+./configure --prefix=$OQPREFIX/local
 make
 make install
 
@@ -205,69 +229,77 @@ make install
 pip install Shapely==1.2.14
 
 ## PostGIS (1.5.8)
-cd ~/src
+cd $OQPREFIX/src
 wget http://download.osgeo.org/postgis/source/postgis-1.5.8.tar.gz
 tar xzf postgis-1.5.8.tar.gz
 cd postgis-1.5.8
-./configure --prefix=$HOME/local --with-projdir=$HOME/local
+./configure --prefix=$OQPREFIX/local --with-projdir=$OQPREFIX/local
 make
 make install
-cp $HOME/src/postgis-1.5.8/doc/postgis_comments.sql $HOME/local/share/postgresql/contrib/postgis-1.5
+cp $OQPREFIX/src/postgis-1.5.8/doc/postgis_comments.sql $OQPREFIX/local/share/postgresql/contrib/postgis-1.5
 
 ## Get useful stuff
 pm 'Installing OpenQuake'
-cd ~/src
+cd $OQPREFIX/src
 git clone https://github.com/daniviga/openquake-centos.git
-cp -v ~/src/openquake-centos/bin/* ~/bin/
-chmod +x ~/bin/*
+cp -v $OQPREFIX/src/openquake-centos/bin/* $OQPREFIX/bin/
+chmod +x $OQPREFIX/bin/*
 
 
 ## Get OpenQuake
-cd ~/openquake; git clone https://github.com/gem/oq-engine.git
-cd ~/openquake/oq-engine; git reset --hard ffe5fbc0c5682653bcb9f2f88778ed0cf5f70c3e
-cd ~/openquake; git clone https://github.com/gem/oq-hazardlib.git
-cd ~/openquake/oq-hazardlib; git reset --hard 48c310974327a42fbd9c635ad08cfc797ba1ac9c
-cd ~/openquake; git clone https://github.com/gem/oq-nrmllib.git
-cd ~/openquake/oq-nrmllib; git reset --hard 2c08215ca4ec163923fd9549e35f01b0c08e0c46
-cd ~/openquake; git clone https://github.com/gem/oq-risklib.git
-cd ~/openquake/oq-risklib; git reset --hard 7c5af4a979cc234f406124dbebbcecea24d26452
+cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-engine.git
+cd $OQPREFIX/openquake/oq-engine; git reset --hard f1c0180ef3ee9ab502bd63e606583e413b23e247
+
+cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-hazardlib.git
+cd $OQPREFIX/openquake/oq-hazardlib; git reset --hard 3c9ba9eb978cc22f48942993307fc81e6e99c4a3
+
+cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-nrmllib.git
+cd $OQPREFIX/openquake/oq-nrmllib; git reset --hard 2d1a169f855f69312b4b47819283063ea15c1448
+
+cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-risklib.git
+cd $OQPREFIX/openquake/oq-risklib; git reset --hard 668d6b5c4e91c439231cc1795195598b68767d8e
+
+cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-commonlib.git
+cd $OQPREFIX/openquake/oq-commonlib; git reset --hard cf0a503f8d625036dec3fc5dd49b68dbb9d19d57
 
 ## Setup OpenQuake
-cd ~/openquake/oq-engine
-echo "GEOS_LIBRARY_PATH = '$HOME/local/lib/libgeos_c.so'" >> openquake/engine/settings.py
+cd $OQPREFIX/openquake/oq-engine
+echo "GEOS_LIBRARY_PATH = '$OQPREFIX/local/lib/libgeos_c.so'" >> openquake/engine/settings.py
 
 ## Build hazardlib speedups
-cd ~/openquake/oq-hazardlib
+cd $OQPREFIX/openquake/oq-hazardlib
 python setup.py build_ext
 cd openquake/hazardlib/geo
-ln -s ../../../build/lib.*/openquake/hazardlib/geo/*.so .
+ln -f -s ../../../build/lib.*/openquake/hazardlib/geo/*.so .
+
+chown -R $OQUSER.$OQUSER $OQPREFIX
+chmod 755 $OQPREFIX
 
 ### DB setup
-~/local/bin/initdb
-~/bin/start-postgresql
-cd ~/openquake/oq-engine/bin
-patch -p0 < ~/src/openquake-centos/oq-patches/create_oq_schema.patch
-./create_oq_schema --db-user=openquaker --db-name=openquake --schema-path=$HOME/openquake/oq-engine/openquake/engine/db/schema --yes
+setup_db
+su -u $OQUSER -c "$OQPREFIX/local/bin/pg_ctl -D $OQPREFIX/local/var/postgresql -l $OQPREFIX/postgresql-main.log start"
+su -u $OQUSER -c "$OQPREFIX/openquake/oq-engine/bin/create_oq_schema --schema-path=$OQPREFIX/openquake/oq-engine/openquake/engine/db/schema --yes"
 
 ### Start services
-~/bin/stop-all
-sleep 2
-~/bin/start-all
+cat $OQPREFIX/src/openquake-centos/init.d/oq-engine | sed "s|_OQPREFIX_|$OQPREFIX|g" | sed -i "s|_OQUSER_|$OQUSER|g" > /etc/rc.d/init.d/oq-engine
+chmod +x /etc/rc.d/init.d/oq-engine
+chkconfig --add oq-engine
+service oq-engine stop
+service oq-engine start
 
 pm 'DONE!'
-pm 'Now, please run source ~/.bash_profile'
 
 ### Run a real computation test
-#cd ~/openquake/oq-engine
+#cd $OQPREFIX/openquake/oq-engine
 #bin/openquake --rh=demos/hazard/SimpleFaultSourceClassicalPSHA/job.ini
 #
 ### Extra tools
 #### htop
-#cd ~/src
+#cd $OQPREFIX/src
 #wget http://downloads.sourceforge.net/project/htop/htop/1.0.2/htop-1.0.2.tar.gz
 #tar xzf htop-1.0.2.tar.gz
 #cd htop-1.0.2
-#./configure --prefix=$HOME/local
+#./configure --prefix=$OQPREFIX/local
 #make
 #make install
 #htop

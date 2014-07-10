@@ -1,6 +1,6 @@
 #!/bin/bash
 cd $(dirname ${BASH_SOURCE[0]})/../openquake
-for dir in oq-engine oq-hazardlib oq-nrmllib oq-risklib;
+for dir in oq-engine oq-hazardlib oq-nrmllib oq-risklib oq-commonlib;
 do
 	echo $dir
 	cd $dir;
