@@ -241,22 +241,26 @@ cp $OQPREFIX/src/postgis-1.5.8/doc/postgis_comments.sql $OQPREFIX/local/share/po
 ## Get useful stuff
 pm 'Installing OpenQuake'
 cd $OQPREFIX/src
-git clone -b syswide https://github.com/daniviga/openquake-centos.git
+git clone https://github.com/daniviga/openquake-centos.git
 cp -v $OQPREFIX/src/openquake-centos/bin/* $OQPREFIX/bin/
 chmod +x $OQPREFIX/bin/*
 
 
 ## Get OpenQuake
 cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-engine.git
-#cd $OQPREFIX/openquake/oq-engine; git reset --hard ffe5fbc0c5682653bcb9f2f88778ed0cf5f70c3e
+cd $OQPREFIX/openquake/oq-engine; git reset --hard f1c0180ef3ee9ab502bd63e606583e413b23e247
+
 cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-hazardlib.git
-#cd $OQPREFIX/openquake/oq-hazardlib; git reset --hard 48c310974327a42fbd9c635ad08cfc797ba1ac9c
+cd $OQPREFIX/openquake/oq-hazardlib; git reset --hard 3c9ba9eb978cc22f48942993307fc81e6e99c4a3
+
 cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-nrmllib.git
-#cd $OQPREFIX/openquake/oq-nrmllib; git reset --hard 2c08215ca4ec163923fd9549e35f01b0c08e0c46
+cd $OQPREFIX/openquake/oq-nrmllib; git reset --hard 2d1a169f855f69312b4b47819283063ea15c1448
+
 cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-risklib.git
-#cd $OQPREFIX/openquake/oq-risklib; git reset --hard 7c5af4a979cc234f406124dbebbcecea24d26452
+cd $OQPREFIX/openquake/oq-risklib; git reset --hard 668d6b5c4e91c439231cc1795195598b68767d8e
+
 cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-commonlib.git
-#cd $OQPREFIX/openquake/oq-risklib; git reset --hard 7c5af4a979cc234f406124dbebbcecea24d26452
+cd $OQPREFIX/openquake/oq-commonlib; git reset --hard cf0a503f8d625036dec3fc5dd49b68dbb9d19d57
 
 ## Setup OpenQuake
 cd $OQPREFIX/openquake/oq-engine
