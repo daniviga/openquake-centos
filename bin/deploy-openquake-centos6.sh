@@ -248,19 +248,19 @@ chmod +x $OQPREFIX/bin/*
 
 ## Get OpenQuake
 cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-engine.git
-cd $OQPREFIX/openquake/oq-engine; git reset --hard f1c0180ef3ee9ab502bd63e606583e413b23e247
+cd $OQPREFIX/openquake/oq-engine
 
 cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-hazardlib.git
-cd $OQPREFIX/openquake/oq-hazardlib; git reset --hard 3c9ba9eb978cc22f48942993307fc81e6e99c4a3
+cd $OQPREFIX/openquake/oq-hazardlib
 
 cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-nrmllib.git
-cd $OQPREFIX/openquake/oq-nrmllib; git reset --hard 2d1a169f855f69312b4b47819283063ea15c1448
+cd $OQPREFIX/openquake/oq-nrmllib
 
 cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-risklib.git
-cd $OQPREFIX/openquake/oq-risklib; git reset --hard 668d6b5c4e91c439231cc1795195598b68767d8e
+cd $OQPREFIX/openquake/oq-risklib
 
 cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-commonlib.git
-cd $OQPREFIX/openquake/oq-commonlib; git reset --hard cf0a503f8d625036dec3fc5dd49b68dbb9d19d57
+cd $OQPREFIX/openquake/oq-commonlib
 
 ## Setup OpenQuake
 cd $OQPREFIX/openquake/oq-engine
