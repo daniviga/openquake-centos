@@ -19,7 +19,9 @@ oq-commonlib: cf0a503f8d625036dec3fc5dd49b68dbb9d19d57
 As normal user or root run:
 
 ```bash
-wget -O- https://raw.githubusercontent.com/daniviga/openquake-centos/master/bin/deploy-openquake-centos6.sh | sudo bash | tee install.log
+cd ~
+wget https://raw.githubusercontent.com/daniviga/openquake-centos/master/bin/deploy-openquake-centos6.sh
+sudo bash deploy-openquake-centos6.sh | tee install.log
 ```
 
 To change the default installation path (```/opt/openquake```) dowload and edit the deployment script:
@@ -27,7 +29,7 @@ To change the default installation path (```/opt/openquake```) dowload and edit 
 cd ~
 wget https://raw.githubusercontent.com/daniviga/openquake-centos/master/bin/deploy-openquake-centos6.sh
 vi deploy-openquake-centos6.sh ## Edit $OQPREFIX var ##
-sudo bash deploy-openquake-centos6.sh
+sudo bash deploy-openquake-centos6.sh | tee install.log
 ```
 
 ### Deploy script (binary)
