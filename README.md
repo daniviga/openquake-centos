@@ -1,12 +1,4 @@
-__work in progress__ tested on __CentOS 6.5__ with OpenQuake Engine commits:
-
-```
-oq-engine:    f1c0180ef3ee9ab502bd63e606583e413b23e247
-oq-hazardlib: 3c9ba9eb978cc22f48942993307fc81e6e99c4a3
-oq-nrmllib:   2d1a169f855f69312b4b47819283063ea15c1448
-oq-risklib:   668d6b5c4e91c439231cc1795195598b68767d8e
-oq-commonlib: cf0a503f8d625036dec3fc5dd49b68dbb9d19d57
-```
+__work in progress__ tested on __CentOS 6.5__ with the OpenQuake Engine (https://github.com/gem/oq-engine).
 
 ## Automatic deploy
 
