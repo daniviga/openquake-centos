@@ -93,7 +93,7 @@ function setup_db {
 standard_conforming_strings = off
 EOF
     cd $OQPREFIX/openquake/oq-engine/bin
-    cat $OQPREFIX/src/openquake-centos/oq-patches/create_oq_schema.patch | sed "s|_OQPREFIX_|$OQPREFIX|g" | sed "s|_OQUSER_|$OQUSER|g" | patch -p0
+    cat $OQPREFIX/src/openquake-centos/oq-patches/oq_create_db.patch | sed "s|_OQPREFIX_|$OQPREFIX|g" | sed "s|_OQUSER_|$OQUSER|g" | patch -p0
 }
 
 
