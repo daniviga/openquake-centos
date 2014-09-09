@@ -281,7 +281,7 @@ su - $OQUSER -c "$OQPREFIX/local/bin/pg_ctl -D $OQPREFIX/local/var/postgresql -l
 su - $OQUSER -c "$OQPREFIX/openquake/oq-engine/bin/create_oq_schema --schema-path=$OQPREFIX/openquake/oq-engine/openquake/engine/db/schema --yes"
 
 ### Start services
-cat $OQPREFIX/src/openquake-centos/init.d/oq-engine | sed "s|_OQPREFIX_|$OQPREFIX|g" | sed -i "s|_OQUSER_|$OQUSER|g" > /etc/rc.d/init.d/oq-engine
+cat $OQPREFIX/src/openquake-centos/init.d/oq-engine | sed "s|_OQPREFIX_|$OQPREFIX|g" | sed "s|_OQUSER_|$OQUSER|g" > /etc/rc.d/init.d/oq-engine
 chmod +x /etc/rc.d/init.d/oq-engine
 chkconfig --add oq-engine
 service oq-engine stop
