@@ -24,10 +24,23 @@ vi deploy-openquake-centos6.sh ## Edit $OQPREFIX var ##
 sudo bash deploy-openquake-centos6.sh | tee install.log
 ```
 
-### Deploy script (binary)
+### Build dependencies
 
-_Coming soon_
+Build depnendencies are installed by the deployment script.
 
+#### CentOS 6
+
+```bash
+yum install bzip2 wget gcc gcc-c++ compat-gcc-34-c++ openssl-devel zlib* make ncurses-devel bzip2-devel readline-devel zip unzip nc libcurl-devel expat-devel gettext gettext-devel xmlto perl-ExtUtils-MakeMaker pcre pcre-devel patch gcc-gfortran compat-gcc-34-g77 libgfortran blas* lapack* libxslt libxslt-devel unixODBC-devel
+```
+
+### Run-time dependencies
+
+#### CentOS 6
+
+```bash
+yum install bzip2 make pcre libgfortran blas lapack libxslt zlib
+```
 
 ## Run OpenQuake
 ```bash
