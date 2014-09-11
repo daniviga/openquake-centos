@@ -33,6 +33,11 @@ Build depnendencies are installed by the deployment script.
 ```bash
 yum install bzip2 wget gcc gcc-c++ compat-gcc-34-c++ openssl-devel zlib* make ncurses-devel bzip2-devel readline-devel zip unzip nc libcurl-devel expat-devel gettext gettext-devel xmlto perl-ExtUtils-MakeMaker pcre pcre-devel patch gcc-gfortran compat-gcc-34-g77 libgfortran blas* lapack* libxslt libxslt-devel unixODBC-devel
 ```
+#### CentOS 5
+
+```bash
+sudo yum install bzip2.x86_64 wget.x86_64 gcc.x86_64 gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-devel.x86_64 zlib*.x86_64 make.x86_64 ncurses-devel.x86_64 bzip2-devel.x86_64 readline-devel.x86_64 zip.x86_64 unzip.x86_64 nc.x86_64 curl-devel.x86_64 expat-devel.x86_64 gettext.x86_64 gettext-devel.x86_64 xmlto.x86_64 patch.x86_64 gcc-gfortran.x86_64 compat-gcc-34-g77.x86_64 libgfortran.x86_64 blas*.x86_64 lapack*.x86_64 libxslt.x86_64 libxslt-devel.x86_64 unixODBC-devel.x86_64
+```
 
 ### Run-time dependencies
 
@@ -40,6 +45,11 @@ yum install bzip2 wget gcc gcc-c++ compat-gcc-34-c++ openssl-devel zlib* make nc
 
 ```bash
 yum install bzip2 make pcre libgfortran blas lapack libxslt zlib
+```
+#### CentOS 5
+
+```bash
+yum install bzip2.x86_64 make.x86_64 pcre.x86_64 libgfortran.x86_64 blas.x86_64 lapack.x86_64 libxslt.x86_64 zlib.x86_64
 ```
 
 ## Run OpenQuake
