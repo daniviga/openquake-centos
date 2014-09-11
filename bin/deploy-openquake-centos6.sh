@@ -248,19 +248,14 @@ chmod +x $OQPREFIX/bin/*
 
 ## Get OpenQuake
 cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-engine.git
-cd $OQPREFIX/openquake/oq-engine
 
 cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-hazardlib.git
-cd $OQPREFIX/openquake/oq-hazardlib
 
 cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-nrmllib.git
-cd $OQPREFIX/openquake/oq-nrmllib
 
 cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-risklib.git
-cd $OQPREFIX/openquake/oq-risklib
 
 cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-commonlib.git
-cd $OQPREFIX/openquake/oq-commonlib
 
 ## Setup OpenQuake
 cd $OQPREFIX/openquake/oq-engine
@@ -278,7 +273,7 @@ chmod 755 $OQPREFIX
 ### DB setup
 setup_db
 su - $OQUSER -c "$OQPREFIX/local/bin/pg_ctl -D $OQPREFIX/local/var/postgresql -l $OQPREFIX/postgresql-main.log start"
-su - $OQUSER -c "$OQPREFIX/openquake/oq-engine/bin/create_oq_schema --schema-path=$OQPREFIX/openquake/oq-engine/openquake/engine/db/schema --yes"
+su - $OQUSER -c "$OQPREFIX/openquake/oq-engine/bin/oq_create_db --db-name=openquake2 --yes"
 
 ### Start services
 cat $OQPREFIX/src/openquake-centos/init.d/oq-engine | sed "s|_OQPREFIX_|$OQPREFIX|g" | sed "s|_OQUSER_|$OQUSER|g" > /etc/rc.d/init.d/oq-engine
