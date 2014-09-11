@@ -273,6 +273,16 @@ chmod 755 $OQPREFIX
 ### DB setup
 setup_db
 su - $OQUSER -c "$OQPREFIX/local/bin/pg_ctl -D $OQPREFIX/local/var/postgresql -l $OQPREFIX/postgresql-main.log start"
+
+for i in {1..5}; do
+    su - $OQUSER -c "$OQPREFIX/local/bin/pg_ctl -D $OQPREFIX/local/var/postgresql -l $OQPREFIX/postgresql-main.log status > /dev/null"
+    if [ $? -ne 0 ]; then
+        sleep 5
+    else
+        break
+    fi
+done
+
 su - $OQUSER -c "$OQPREFIX/openquake/oq-engine/bin/oq_create_db --db-name=openquake2 --yes"
 
 ### Start services
