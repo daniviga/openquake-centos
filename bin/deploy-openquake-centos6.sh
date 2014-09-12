@@ -274,6 +274,9 @@ chmod 755 $OQPREFIX
 setup_db
 su - $OQUSER -c "$OQPREFIX/local/bin/pg_ctl -D $OQPREFIX/local/var/postgresql -l $OQPREFIX/postgresql-main.log start"
 
+pm 'Wait the DB to come up'
+sleep 10
+
 for i in {1..5}; do
     su - $OQUSER -c "$OQPREFIX/local/bin/pg_ctl -D $OQPREFIX/local/var/postgresql -l $OQPREFIX/postgresql-main.log status > /dev/null"
     if [ $? -ne 0 ]; then
