@@ -65,7 +65,7 @@ This can be done automatically at every login via user's .bash\_profile:
 $ echo "source /opt/openquake/env.sh" >> ~/.bash_profile
 ```
 
-or systemwide:
+or systemwide (not recommended):
 
 ```bash
 $ sudo su -c "echo 'source /opt/openquake/env.sh' >> /etc/profile.d/oq-engine.sh"
