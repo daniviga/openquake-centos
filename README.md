@@ -1,4 +1,4 @@
-__work in progress__ tested on __CentOS 5.11/6.5/7__ with the OpenQuake Engine (https://github.com/gem/oq-engine).
+__work in progress__ tested on __CentOS 5.11 / 6.5 / 7__ with the OpenQuake Engine (https://github.com/gem/oq-engine).
 
 ## Automatic deploy
 
