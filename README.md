@@ -146,3 +146,5 @@ make
 make install
 htop
 ```
+
+More information and support: info@openquake.org
