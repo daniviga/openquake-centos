@@ -1,4 +1,4 @@
-[openquaker@dev0 ~]$ openquake --rh=openquake/oq-engine/demos/hazard/SimpleFaultSourceClassicalPSHA/job.ini |tee output.log
+[openquaker@dev0 ~]$ oq-engine --rh=openquake/oq-engine/demos/hazard/SimpleFaultSourceClassicalPSHA/job.ini |tee output.log
 [2013-11-11 23:38:45,680 hazard #9 dev0.centos.openquake.org PROGRESS MainProcess/12620 root] **  initializing sources
 [2013-11-11 23:38:45,715 hazard #9 dev0.centos.openquake.org PROGRESS MainProcess/12620 root] **  initializing realizations
 [2013-11-11 23:38:45,872 hazard #9 dev0.centos.openquake.org PROGRESS MainProcess/12620 root] **  executing (hazard)
