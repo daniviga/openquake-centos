@@ -146,6 +146,3 @@ make
 make install
 htop
 ```
-
-
-_how to ver. 5.0_
