@@ -5,6 +5,7 @@ __work in progress__ tested on __CentOS 6.5__ with the OpenQuake Engine (https:/
 ### User environment
 
 * Requirements are: ```sudo```, ```wget``` and ```sed```
+* SELinux must be disabled or in 'permissive' mode
 
 ### Deploy script (from sources)
 
@@ -53,28 +54,63 @@ yum install bzip2.x86_64 make.x86_64 pcre.x86_64 libgfortran.x86_64 blas.x86_64 
 ```
 
 ## Run OpenQuake
+
+To allow users run the OpenQuake Engine its environment must be loaded:
 ```bash
+$ source /opt/openquake/env.sh
+```
+This can be done automatically at every login via user's .bash\_profile:
 
-$ openquake
+```bash
+$ echo "source /opt/openquake/env.sh" >> ~/.bash_profile
+```
 
-usage: openquake [-h] [--version] [--log-file LOG_FILE]
+or systemwide:
+
+```bash
+$ sudo su -c "echo 'source /opt/openquake/env.sh' >> /etc/profile.d/oq-engine.sh"
+```
+Now you can run the OpenQuake Engine:
+
+```bash
+$ oq-engine
+
+usage: oq-engine [-h] [--version] [--log-file LOG_FILE]
                  [--log-level {debug,info,progress,warn,error,critical}]
                  [--no-distribute] [--list-inputs INPUT_TYPE] [--yes]
-                 [--config-file CONFIG_FILE] [--run-hazard CONFIG_FILE]
+                 [--config-file CONFIG_FILE] [--upgrade-db] [--version-db]
+                 [--what-if-I-upgrade] [--run-hazard CONFIG_FILE]
                  [--list-hazard-calculations]
                  [--list-hazard-outputs HAZARD_CALCULATION_ID]
                  [--export-hazard OUTPUT_ID TARGET_DIR]
+                 [--export-hazard-outputs HAZARD_CALCULATION_ID TARGET_DIR]
                  [--delete-hazard-calculation HAZARD_CALCULATION_ID]
-                 [--run-risk CONFIG_FILE] [--hazard-output-id HAZARD_OUTPUT]
+                 [--delete-uncompleted-calculations] [--run-risk CONFIG_FILE]
+                 [--hazard-output-id HAZARD_OUTPUT]
                  [--hazard-calculation-id HAZARD_CALCULATION_ID]
                  [--list-risk-calculations]
                  [--list-risk-outputs RISK_CALCULATION_ID]
                  [--export-risk OUTPUT_ID TARGET_DIR]
+                 [--export-risk-outputs RISK_CALCULATION_ID TARGET_DIR]
                  [--delete-risk-calculation RISK_CALCULATION_ID]
                  [--exports {xml}] [--export-type {xml,geojson}]
-                 [--load-gmf GMF_FILE] [--load-curve CURVE_FILE]
-                 [--list-imported-outputs]
-                 [--optimize-source-model INPUT_FILE AREA_DISCRETIZATION OUTPUT_FILE]
+                 [--save-hazard-calculation HAZARD_CALCULATION_ID DUMP_DIR]
+                 [--load-hazard-calculation DUMP_DIR] [--load-gmf GMF_FILE]
+                 [--load-curve CURVE_FILE] [--list-imported-outputs]
+
+```
+
+### Start and stop the OpenQuake Engine stack
+
+An init.d script is provided to start and stop the OpenQuake Engine software stack (RabbitMQ, PostgreSQL, Celeryd)
+
+```bash
+# Stop
+$ sudo service oq-engine stop
+# Start
+$ sudo service oq-engine start
+# Restart
+$ sudo service oq-engine restart
 ```
 
 ## Run some tests
@@ -97,7 +133,6 @@ nosetests  -a 'qa,risk,scenario' -v --with-xunit --xunit-file=xunit-qa-risk-scen
 
 python-coverage xml --include="openquake/*"
 ```
-
 
 ## Extra tools
 ### htop
