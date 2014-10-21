@@ -115,7 +115,6 @@ $ sudo service oq-engine restart
 
 ## Run some tests
 ```bash
-sudo pip install nose==1.3.0
 cd /opt/openquake/openquake/oq-engine
 nosetests -v --with-xunit --with-coverage --cover-package=openquake.engine --with-doctest -x tests/
 
