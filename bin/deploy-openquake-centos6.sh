@@ -109,11 +109,11 @@ pm 'Environment setup'
 setup_env
 
 ## Build System (CentOS 6)
-pm 'Installing pre-requisites'
+pm 'Install pre-requisites'
 yum install -y bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-devel.x86_64 zlib*.x86_64 make.x86_64 ncurses-devel.x86_64 bzip2-devel.x86_64 readline-devel.x86_64 zip.x86_64 unzip.x86_64 nc.x86_64 libcurl-devel.x86_64 expat-devel.x86_64 gettext.x86_64 gettext-devel.x86_64 xmlto.x86_64 perl-ExtUtils-MakeMaker.x86_64 pcre.x86_64 pcre-devel.x86_64 patch.x86_64 gcc-gfortran.x86_64 compat-gcc-34-g77.x86_64 libgfortran.x86_64 blas*.x86_64 lapack*.x86_64 libxslt.x86_64 libxslt-devel.x86_64 unixODBC-devel.x86_64
 
 ## Git
-pm 'Installing GIT'
+pm 'Install GIT'
 cd $OQPREFIX/src
 wget https://git-core.googlecode.com/files/git-1.8.4.3.tar.gz
 tar xzf git-1.8.4.3.tar.gz
@@ -121,7 +121,7 @@ cd git-1.8.4.3
 make prefix=$OQPREFIX/local install
 
 ## Python 2.7
-pm 'Installing Python'
+pm 'Install Python'
 cd $OQPREFIX/src
 wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz
 tar xzf Python-2.7.6.tgz
@@ -146,11 +146,11 @@ python2.7 setup.py install
 cp /usr/lib64/libblas.so /usr/lib64/liblapack.so $OQPREFIX/local/lib64
 
 ## numpy (1.6.2)
-pm 'Installing NumPy'
+pm 'Install NumPy'
 pip install numpy==1.6.2
 
 ## scipy
-pm 'Installing SciPy'
+pm 'Install SciPy'
 pip install scipy==0.13.0
 
 ## pip various dep
@@ -163,7 +163,7 @@ pip install Celery==2.5.5
 pip install django==1.3.1
 
 ## erlang _(RabbitMQ dep.)_
-pm 'Installing Erlang'
+pm 'Install Erlang'
 cd $OQPREFIX/src
 wget http://www.erlang.org/download/otp_src_R14B04.tar.gz
 tar xzf otp_src_R14B04.tar.gz
@@ -175,7 +175,7 @@ cd $OQPREFIX/local/erlang && ./Install -minimal $OQPREFIX/local/erlang
 cd bin && for a in $(ls); do ln -f -s -t $OQPREFIX/local/bin ../erlang/bin/$a; done
 
 ## RabbitMQ
-pm 'Installing RabbitMQ'
+pm 'Install RabbitMQ'
 cd $OQPREFIX/src
 wget http://www.rabbitmq.com/releases/rabbitmq-server/v2.8.7/rabbitmq-server-2.8.7.tar.gz
 tar xzf rabbitmq-server-2.8.7.tar.gz
@@ -187,7 +187,7 @@ export MNESIA_DIR=$OQPREFIX/local/var/rabbitmq
 make && make install
 
 ## Postgres (9.1)
-pm 'Installing PostgreSQL'
+pm 'Install PostgreSQL'
 cd $OQPREFIX/src
 wget http://ftp.postgresql.org/pub/source/v9.1.10/postgresql-9.1.10.tar.gz
 tar xzf postgresql-9.1.10.tar.gz
@@ -240,7 +240,7 @@ make install
 cp $OQPREFIX/src/postgis-1.5.8/doc/postgis_comments.sql $OQPREFIX/local/share/postgresql/contrib/postgis-1.5
 
 ## Get useful stuff
-pm 'Installing OpenQuake'
+pm 'Install the OpenQuake Engine'
 cd $OQPREFIX/src
 git clone https://github.com/daniviga/openquake-centos.git
 cp -v $OQPREFIX/src/openquake-centos/bin/* $OQPREFIX/bin/
@@ -292,7 +292,7 @@ su - $OQUSER -c "$OQPREFIX/openquake/oq-engine/bin/oq_create_db --db-name=openqu
 $OQPREFIX/openquake/oq-engine/bin/oq-engine --upgrade-db
 
 
-### Start services
+pm 'Start the OpenQuake Engine software stack and services'
 cat $OQPREFIX/src/openquake-centos/init.d/oq-engine | sed "s|_OQPREFIX_|$OQPREFIX|g" | sed "s|_OQUSER_|$OQUSER|g" > /etc/rc.d/init.d/oq-engine
 chmod +x /etc/rc.d/init.d/oq-engine
 chkconfig --add oq-engine
