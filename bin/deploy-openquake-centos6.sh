@@ -287,7 +287,10 @@ for i in {1..5}; do
     fi
 done
 
+pm 'Install the OpenQuake Engine DB'
 su - $OQUSER -c "$OQPREFIX/openquake/oq-engine/bin/oq_create_db --db-name=openquake2 --yes"
+$OQPREFIX/openquake/oq-engine/bin/oq-engine --upgrade-db
+
 
 ### Start services
 cat $OQPREFIX/src/openquake-centos/init.d/oq-engine | sed "s|_OQPREFIX_|$OQPREFIX|g" | sed "s|_OQUSER_|$OQUSER|g" > /etc/rc.d/init.d/oq-engine
