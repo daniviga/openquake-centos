@@ -136,11 +136,11 @@ python-coverage xml --include="openquake/*"
 ## Extra tools
 ### htop
 ```bash
-cd /tmp
+cd /opt/openquake/src
 wget http://downloads.sourceforge.net/project/htop/htop/1.0.2/htop-1.0.2.tar.gz
 tar xzf htop-1.0.2.tar.gz
 cd htop-1.0.2
-./configure
+./configure --prefix=/opt/openquake/local
 make
 make install
 htop
