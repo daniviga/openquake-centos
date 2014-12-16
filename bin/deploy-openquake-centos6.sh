@@ -78,7 +78,7 @@ PATH=$OQPREFIX/openquake/oq-engine/bin:$OQPREFIX/local/bin:$OQPREFIX/local/sbin:
 LD_LIBRARY_PATH=$OQPREFIX/local/lib:$OQPREFIX/local/lib64
 CPATH=$OQPREFIX/local/include
 
-PYTHONPATH=.:$OQPREFIX/openquake/oq-engine:$OQPREFIX/openquake/oq-hazardlib:$OQPREFIX/openquake/oq-nrmllib:$OQPREFIX/openquake/oq-risklib:$OQPREFIX/openquake/oq-commonlib
+PYTHONPATH=.:$OQPREFIX/openquake/oq-engine:$OQPREFIX/openquake/oq-hazardlib:$OQPREFIX/openquake/oq-risklib
 PGDATA=$OQPREFIX/local/var/postgresql
 
 export PATH
