@@ -1,4 +1,6 @@
-__work in progress__ tested on __CentOS 5.11 / 6.5 / 7__ with the OpenQuake Engine (https://github.com/gem/oq-engine).
+## OpenQuake Engine 1.2.1 for RHEL/CentOS
+
+__work in progress__ tested on CentOS 5.11 / 6.5 / 7 with OpenQuake Engine 1.2.1 (https://github.com/gem/oq-engine).
 
 ## Automatic deploy
 
