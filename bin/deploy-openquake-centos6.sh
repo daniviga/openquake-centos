@@ -16,13 +16,25 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Uncomment to enable debug
-# set -x
+## Initialization
+if [ $GEM_SET_DEBUG ]; then
+    set -x
+fi
 set -e
 set -o pipefail
 
-OQPREFIX='/opt/openquake'
-OQUSER='oq-engine'
+if [ $GEM_SET_OQPREFIX ]; then
+    OQPREFIX=$GEM_SET_OQPREFIX
+else
+    OQPREFIX='/opt/openquake'
+fi
+
+if [ $GEM_SET_OQUSER ]; then
+    OQUSER=$GEM_SET_OQUSER
+else
+    OQUSER='oq-engine'
+fi
+
 
 function run_tests {
     cd $OQPREFIX/openquake/oq-engine
