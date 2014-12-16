@@ -246,17 +246,20 @@ git clone https://github.com/daniviga/openquake-centos.git
 cp -v $OQPREFIX/src/openquake-centos/bin/* $OQPREFIX/bin/
 chmod +x $OQPREFIX/bin/*
 
-
 ## Get OpenQuake
-cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-engine.git
+cd $OQPREFIX/openquake
+git clone https://github.com/gem/oq-engine.git
+cd $OQPREFIX/openquake/oq-engine
+git checkout tags/v1.2.1
+cd ..
+git clone https://github.com/gem/oq-hazardlib.git
+git clone https://github.com/gem/oq-risklib.git
+for i in oq-hazardlib oq-risklib; do
+    cd $i
+    git checkout tags/oq-engine_v1.2.0
+    cd ..
+done
 
-cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-hazardlib.git
-
-cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-nrmllib.git
-
-cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-risklib.git
-
-cd $OQPREFIX/openquake; git clone https://github.com/gem/oq-commonlib.git
 
 ## Setup OpenQuake
 cd $OQPREFIX/openquake/oq-engine
@@ -289,7 +292,7 @@ done
 
 pm 'Install the OpenQuake Engine DB'
 su - $OQUSER -c "$OQPREFIX/openquake/oq-engine/bin/oq_create_db --db-name=openquake2 --yes"
-$OQPREFIX/openquake/oq-engine/bin/oq-engine --upgrade-db
+$OQPREFIX/openquake/oq-engine/bin/oq-engine --upgrade-db --yes
 
 
 pm 'Start the OpenQuake Engine software stack and services'
