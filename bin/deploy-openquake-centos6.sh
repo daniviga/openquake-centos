@@ -262,13 +262,13 @@ chmod +x $OQPREFIX/bin/*
 cd $OQPREFIX/openquake
 git clone https://github.com/gem/oq-engine.git
 cd $OQPREFIX/openquake/oq-engine
-git checkout tags/v1.2.1
+git checkout -b stable_v1.2 tags/v1.2.1.1
 cd ..
 git clone https://github.com/gem/oq-hazardlib.git
 git clone https://github.com/gem/oq-risklib.git
 for i in oq-hazardlib oq-risklib; do
     cd $i
-    git checkout tags/oq-engine_v1.2.0
+    git checkout -b stable_v1.2 tags/oq-engine_v1.2.0
     cd ..
 done
 
