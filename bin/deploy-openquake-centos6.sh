@@ -261,14 +261,11 @@ chmod +x $OQPREFIX/bin/*
 ## Get OpenQuake
 cd $OQPREFIX/openquake
 git clone https://github.com/gem/oq-engine.git
-cd $OQPREFIX/openquake/oq-engine
-git checkout -b stable_v1.2 tags/v1.2.1.1
-cd ..
 git clone https://github.com/gem/oq-hazardlib.git
 git clone https://github.com/gem/oq-risklib.git
-for i in oq-hazardlib oq-risklib; do
+for i in $(ls -d oq-*/); do
     cd $i
-    git checkout -b stable_v1.2 tags/oq-engine_v1.2.0
+    git checkout release-1.2
     cd ..
 done
 
