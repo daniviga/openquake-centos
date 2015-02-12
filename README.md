@@ -2,6 +2,9 @@
 
 __work in progress__ tested on CentOS 5.11 / 6.5 / 7 with OpenQuake Engine 1.2.1 (https://github.com/gem/oq-engine).
 
+For RHEL/CentOS 7 and the current OpenQuake master you can install all the dependencies using binary RPMs: (https://github.com/gem/oq-engine/wiki/Installing-the-OpenQuake-Engine-from-source-code-on-Fedora-and-RHEL)
+
+
 ## Automatic deploy
 
 ### User environment
