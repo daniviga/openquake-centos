@@ -127,7 +127,6 @@ yum install -y bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-de
 ## Git
 pm 'Install GIT'
 cd $OQPREFIX/src
-wget https://git-core.googlecode.com/files/git-1.8.4.3.tar.gz
 wget https://github.com/git/git/archive/v2.3.1.tar.gz
 tar xzf v2.3.1.tar.gz
 cd v2.3.1
