@@ -128,58 +128,55 @@ yum install -y bzip2 wget gcc gcc-c++.x86_64 compat-gcc-34-c++.x86_64 openssl-de
 pm 'Install GIT'
 cd $OQPREFIX/src
 wget https://git-core.googlecode.com/files/git-1.8.4.3.tar.gz
-tar xzf git-1.8.4.3.tar.gz
-cd git-1.8.4.3
+wget https://github.com/git/git/archive/v2.3.1.tar.gz
+tar xzf v2.3.1.tar.gz
+cd v2.3.1
 make prefix=$OQPREFIX/local install
 
 ## Python 2.7
 pm 'Install Python'
 cd $OQPREFIX/src
-wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz
-tar xzf Python-2.7.6.tgz
-cd Python-2.7.6
+wget http://www.python.org/ftp/python/2.7.8/Python-2.7.8.tgz
+tar xzf Python-2.7.8.tgz
+cd Python-2.7.8
 ./configure --prefix=$OQPREFIX/local --enable-shared
 make
 make install
 
 ## setuptools
 cd $OQPREFIX/src
-wget --no-check-certificate http://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg
-/bin/bash setuptools-0.6c11-py2.7.egg
+wget https://bootstrap.pypa.io/ez_setup.py -O - | python
 
 ## pip
 cd $OQPREFIX/src
-wget --no-check-certificate http://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz
-tar xzf pip-1.4.1.tar.gz
-cd pip-1.4.1
-python2.7 setup.py install
+wget https://bootstrap.pypa.io/get-pip.py -O - | python
 
 ## numpy & scipy deps.
 cp /usr/lib64/libblas.so /usr/lib64/liblapack.so $OQPREFIX/local/lib64
 
-## numpy (1.6.2)
+## numpy (1.8.1)
 pm 'Install NumPy'
-pip install numpy==1.6.2
+pip install numpy==1.8.1
 
-## scipy
+## scipy (0.13.0)
 pm 'Install SciPy'
 pip install scipy==0.13.0
 
 ## pip various dep
-pip install amqplib==1.0.2 python-geohash==0.8.4 mock==0.7.2 lxml==3.3.4 psutil==1.1.3 nose==1.3.0 futures==2.1.6
+pip install amqp==1.3.3 mock==1.0.1 lxml==3.3.4 psutil==1.2.1 nose==1.3.1 futures==2.1.6
 
 ## Celery
-pip install Celery==2.5.5
+pip install Celery==3.1.6
 
 ## Django
-pip install django==1.3.1
+pip install django==1.6.1
 
 ## erlang _(RabbitMQ dep.)_
 pm 'Install Erlang'
 cd $OQPREFIX/src
-wget http://www.erlang.org/download/otp_src_R14B04.tar.gz
-tar xzf otp_src_R14B04.tar.gz
-cd otp_src_R14B04
+wget http://www.erlang.org/download/otp_src_R16B03.tar.gz
+tar xzf otp_src_R16B03.tar.gz
+cd otp_src_R16B03
 ./configure
 make
 make RELEASE_ROOT=$OQPREFIX/local/erlang release
@@ -189,9 +186,9 @@ cd bin && for a in $(ls); do ln -f -s -t $OQPREFIX/local/bin ../erlang/bin/$a; d
 ## RabbitMQ
 pm 'Install RabbitMQ'
 cd $OQPREFIX/src
-wget http://www.rabbitmq.com/releases/rabbitmq-server/v2.8.7/rabbitmq-server-2.8.7.tar.gz
-tar xzf rabbitmq-server-2.8.7.tar.gz
-cd rabbitmq-server-2.8.7
+wget http://www.rabbitmq.com/releases/rabbitmq-server/v3.2.4/rabbitmq-server-3.2.4.tar.gz
+tar xzf rabbitmq-server-3.2.4.tar.gz
+cd rabbitmq-server-3.2.4
 export TARGET_DIR=$OQPREFIX/local
 export SBIN_DIR=$OQPREFIX/local/sbin
 export MAN_DIR=$OQPREFIX/local/share/man/
@@ -201,30 +198,30 @@ make && make install
 ## Postgres (9.1)
 pm 'Install PostgreSQL'
 cd $OQPREFIX/src
-wget http://ftp.postgresql.org/pub/source/v9.1.10/postgresql-9.1.10.tar.gz
-tar xzf postgresql-9.1.10.tar.gz
+wget http://ftp.postgresql.org/pub/source/v9.3.6/postgresql-9.3.6.tar.gz
+tar xzf postgresql-9.3.6.tar.gz
 cd postgresql-9.1.10
 ./configure --prefix=$OQPREFIX/local --with-python
 make
 make install
 
 ## Psycopg2
-pip install psycopg2==2.5.1
+pip install psycopg2==2.4.5
 
 ## Swig _(Geos dep.)_
 cd $OQPREFIX/src
-wget http://prdownloads.sourceforge.net/swig/swig-2.0.9.tar.gz
-tar xzf swig-2.0.9.tar.gz
-cd swig-2.0.9
+wget http://prdownloads.sourceforge.net/swig/swig-2.0.11.tar.gz
+tar xzf swig-2.0.11.tar.gz
+cd swig-2.0.11
 ./configure --prefix=$OQPREFIX/local --without-alllang --with-python
 make
 make install
 
 ## Geos _(PostGIS dep.)_
 cd $OQPREFIX/src
-wget http://download.osgeo.org/geos/geos-3.3.7.tar.bz2
-tar xjf geos-3.3.7.tar.bz2
-cd geos-3.3.7
+wget http://download.osgeo.org/geos/geos-3.4.2.tar.bz2
+tar xjf geos-3.4.2.tar.bz2
+cd geos-3.4.2
 CFLAGS="-m64" CPPFLAGS="-m64" CXXFLAGS="-m64" LDFLAGS="-m64" FFLAGS="-m64" LDFLAGS="-L/usr/lib64/" ./configure --prefix=$OQPREFIX/local --enable-python
 make
 make install
@@ -238,18 +235,18 @@ cd proj-4.8.0
 make
 make install
 
-## Shapely (1.2.14)
-pip install Shapely==1.2.14
+## Shapely (1.3.0)
+pip install Shapely==1.3.0
 
 ## PostGIS (1.5.8)
 cd $OQPREFIX/src
-wget http://download.osgeo.org/postgis/source/postgis-1.5.8.tar.gz
-tar xzf postgis-1.5.8.tar.gz
-cd postgis-1.5.8
+wget http://download.osgeo.org/postgis/source/postgis-2.1.2.tar.gz
+tar xzf postgis-2.1.2.tar.gz
+cd postgis-2.1.2
 ./configure --prefix=$OQPREFIX/local --with-projdir=$OQPREFIX/local
 make
 make install
-cp $OQPREFIX/src/postgis-1.5.8/doc/postgis_comments.sql $OQPREFIX/local/share/postgresql/contrib/postgis-1.5
+cp $OQPREFIX/src/postgis-2.1.2/doc/postgis_comments.sql $OQPREFIX/local/share/postgresql/contrib/postgis-2.1
 
 ## Get useful stuff
 pm 'Install the OpenQuake Engine'
