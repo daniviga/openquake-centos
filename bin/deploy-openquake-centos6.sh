@@ -129,7 +129,7 @@ pm 'Install GIT'
 cd $OQPREFIX/src
 wget https://github.com/git/git/archive/v2.3.1.tar.gz
 tar xzf v2.3.1.tar.gz
-cd v2.3.1
+cd git-2.3.1
 make prefix=$OQPREFIX/local install
 
 ## Python 2.7
