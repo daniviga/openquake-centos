@@ -1,9 +1,0 @@
-#!/bin/bash
-cd $(dirname ${BASH_SOURCE[0]})/../openquake
-for dir in $(ls -d oq-*/);
-do
-	echo $dir
-	cd $dir;
-	git pull;
-	cd ..;
-done

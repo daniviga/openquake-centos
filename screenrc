@@ -1,4 +1,0 @@
-# Rename to .screenrc and put into the OpenQuake user homedir
-
-# make the shell in every window as your login shell
-shell -$SHELL
