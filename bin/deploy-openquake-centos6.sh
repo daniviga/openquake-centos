@@ -199,7 +199,7 @@ pm 'Install PostgreSQL'
 cd $OQPREFIX/src
 wget http://ftp.postgresql.org/pub/source/v9.3.6/postgresql-9.3.6.tar.gz
 tar xzf postgresql-9.3.6.tar.gz
-cd postgresql-9.1.10
+cd postgresql-9.3.6
 ./configure --prefix=$OQPREFIX/local --with-python
 make
 make install
